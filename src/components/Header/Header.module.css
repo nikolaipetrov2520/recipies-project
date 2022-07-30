@@ -50,11 +50,14 @@ header img {
 
 .searchLabel{
     position: absolute;
+    top: 5px;
+    right: 50px;
+    opacity: 0.5;
 }
 
 .searchInput{
     border-radius: 5px;
-    width: 250px;
+    width: 300px;
     border: 1px solid grey;
     font-size: 20px;
 }

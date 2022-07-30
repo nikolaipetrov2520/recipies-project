@@ -15,7 +15,7 @@ const Header = () => {
                 </Link>
             </h1>
             <div className={styles.search}>
-                <label htmlFor='search' className={styles.searchLabel}><img /></label>
+                <label htmlFor='search' className={styles.searchLabel}><img src='/search.png' alt='search' width={"20px"}/></label>
                 <input type="text" id='search' className={styles.searchInput}></input>
             </div>
             <nav>
