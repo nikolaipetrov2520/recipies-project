@@ -1,0 +1,55 @@
+.allRecipies {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    max-width: 100%;
+    margin: 15px;
+    overflow: hidden;
+    width: 600px auto;
+    min-height: 210px;
+    height: auto;
+}
+
+.allRecipiesInfo {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.allRecipiesInfo>img {
+    margin-top: -10px;
+    border-radius: 10%;
+    top: 30px;
+    right: 30px;
+    float: right;
+    padding: 5px;
+    width: 200px;
+}
+
+.allRecipiesInfo>h6 {
+    font-size: 15px;
+    font-weight: 750;
+    color: #161618;
+}
+
+.allRecipiesInfo>h2 {
+    font-size: 20px;
+    font-weight: 750;
+    color: #161618;
+}
+
+.detailsButton {
+    background-color: #ba772a;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 15px;
+    position: absolute;
+    bottom: 30px;
+    text-align: left;
+    letter-spacing: 1px;
+    padding: 7px;
+    margin-top: auto;
+    margin-left: 20px;
+    border-radius: 6px;
+}

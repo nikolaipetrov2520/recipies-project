@@ -1,0 +1,60 @@
+header{
+    display: flex;
+   justify-content: space-around;
+   align-items: center;
+   background-color: rgb(31, 142, 130);
+   margin-bottom: 50px;
+}
+
+header h1.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 40%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0px;
+}
+nav div{
+    margin: 0px;
+}
+
+nav a:hover{
+    color: yellow;
+}
+
+header img {
+    margin: 0px;
+}
+
+.search{
+    width: 20%;
+    position: relative
+}
+
+.searchLabel{
+    position: absolute;
+}
+
+.searchInput{
+    border-radius: 5px;
+    width: 250px;
+    border: 1px solid grey;
+    font-size: 20px;
+}

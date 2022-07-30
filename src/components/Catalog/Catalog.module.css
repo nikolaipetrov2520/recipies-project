@@ -1,0 +1,20 @@
+.catalogPage {
+    background-color: transparent;
+    box-shadow: 0px 0px 40px 0px;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    width: 900px;
+    margin-bottom: 50px;
+}
+
+.catalogPage>h1 {
+    color: rgb(43, 206, 138);
+    font-family: "Agency FB";
+    font-size: 48px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+footer{
+    background-color: rgb(235, 233, 233);
+    padding: 10px;
+    text-align: left;
+    color: rgb(102, 102, 102);
+}
+
+span{
+    font-style: italic;
+    padding-left: 20px;
+}
+
+h3{
+    padding-left: 30px;
+}
