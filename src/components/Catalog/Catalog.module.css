@@ -24,3 +24,15 @@
     width: 100%;
     margin-bottom: 40px;
 }
+
+@media screen and (max-width: 1300px){
+    .catalogPage {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .catalogPage {
+        width: 90%;
+    }
+}
