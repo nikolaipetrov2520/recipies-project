@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from "react";
 
 import './App.module.css'
 
@@ -8,6 +9,7 @@ import { useState } from 'react';
 
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
+import Register from './components/Register/Register'
 import Header from './components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import Footer from './components/Footer/Footer';
@@ -29,12 +31,12 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/login" element={<Login />} />
-              {/* <Route path="/register" element={
+              <Route path="/register" element={
                 <Suspense fallback={<span>Loading....</span>}>
                   <Register />
                 </Suspense>
               } />
-              <Route path="/create" element={(
+              {/* <Route path="/create" element={(
                 <PrivateRoute>
                   <CreateGame />
                 </PrivateRoute>

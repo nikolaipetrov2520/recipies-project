@@ -33,3 +33,13 @@ export const useAuthContext = () => {
 
     return context;
 };
+
+export const withAuth = (Component) => {
+    const AuthWrapper = (props) => {
+        const context = useContext(AuthContext);
+        
+        return <Component {...props} auth={context} />
+    }
+
+    return AuthWrapper;
+} 

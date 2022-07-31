@@ -1428,9 +1428,15 @@
                 ]
             }
         },
-        comments: {
-            
-        }
+        comments: [
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "text": "super",
+                "_recepieId": "136777f5-3277-42ad-b874-76d043b069cb",
+                "_createdOn": 1659284933458,
+                "_id": "8b010033-c0e1-4e9e-8890-107c8e5be173"
+            }
+        ]
     };
     var rules$1 = {
         users: {

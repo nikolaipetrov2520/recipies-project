@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import styles from './Login.module.css';
 
@@ -45,7 +45,7 @@ const Login = () => {
                     <input type="submit" className={styles.btnSubmit} value="Login" />
                     <p className={styles.field}>
                         <span>
-                            If you don't have profile click <a href="#">here</a>
+                            If you don't have profile click <Link to="/register">here</Link>
                         </span>
                     </p>
                 </div>
