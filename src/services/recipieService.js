@@ -4,7 +4,7 @@ const baseUrl = 'http://localhost:3030/data/recipies';
 
 export const getAll = () => request.get(baseUrl);
 
-// export const getOne = (gameId) => request.get(`${baseUrl}/${gameId}`);
+export const getOne = (recipieId) => request.get(`${baseUrl}/${recipieId}`);
 
 // export const create = (gameData) => request.post(baseUrl, gameData);
 

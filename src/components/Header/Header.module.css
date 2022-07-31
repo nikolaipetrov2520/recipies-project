@@ -20,9 +20,9 @@ a{
 }
 
 nav{
-    width: 40%;
+    width: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -33,6 +33,9 @@ nav a{
 }
 nav div{
     margin: 0px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 nav a:hover{
@@ -43,21 +46,36 @@ header img {
     margin: 0px;
 }
 
-.search{
-    width: 20%;
-    position: relative
+.username{
+    color: white;
+    padding: 0px;
+    padding-right: 5px;
+    width: 10%;
+    text-align: right;
 }
 
-.searchLabel{
-    position: absolute;
-    top: 5px;
-    right: 50px;
-    opacity: 0.5;
+@media (max-width: 1400px){
+    header h1.logo{
+        width: 20%;
+    }
 }
 
-.searchInput{
-    border-radius: 5px;
-    width: 300px;
-    border: 1px solid grey;
-    font-size: 20px;
-}
+@media (max-width: 1000px){
+    header{
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    nav{
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+    nav div{
+        flex-direction: column;
+        gap: 10px;
+    }
+    .username{
+        text-align: center;
+    }
+}   

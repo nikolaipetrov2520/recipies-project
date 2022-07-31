@@ -8,22 +8,42 @@
     width: 45%;
     min-height: 210px;
     height: auto;
+
 }
 
 .allRecipiesInfo {
     padding: 30px;
     position: relative;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
 }
 
-.allRecipiesInfo>img {
+.allRecipiesInfo img {
     margin-top: -10px;
-    border-radius: 10%;
+    border-radius: 10px;
     top: 30px;
     right: 30px;
     float: right;
     padding: 5px;
-    width: 200px;
+    width: 50%;
+}
+
+.allRecipiesInfo .img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allRecipiesInfo .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .allRecipiesInfo>h6 {
@@ -39,16 +59,10 @@
 }
 
 .detailsButton {
-    background-color: #ba772a;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
+    color: rgb(31, 142, 130);
     font-size: 15px;
-    position: absolute;
-    bottom: 30px;
-    text-align: left;
     letter-spacing: 1px;
     padding: 7px;
-    margin-top: auto;
     margin-left: 20px;
     border-radius: 6px;
 }

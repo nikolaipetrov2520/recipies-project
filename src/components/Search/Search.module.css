@@ -1,0 +1,30 @@
+
+.search{
+    width: 20%;
+    position: relative
+}
+
+.search input{
+    padding-left: 8px;
+}
+
+.searchButton{
+    position: absolute;
+    top: -3px;
+    right: 42px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.searchInput{
+    border-radius: 5px;
+    width: 300px;
+    border: 1px solid grey;
+    font-size: 20px;
+}
+
+@media (max-width: 1300px){
+    .search{
+        display: none;
+    }
+}

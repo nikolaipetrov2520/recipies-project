@@ -1,6 +1,8 @@
 import styles from './Header.module.css'
 import { Link } from 'react-router-dom';
 
+import Search from '../Search/Search';
+
 import { useAuthContext } from '../../contexts/AuthContext';
 
 const Header = () => {
@@ -14,16 +16,15 @@ const Header = () => {
                     Рецепти
                 </Link>
             </h1>
-            <div className={styles.search}>
-                <label htmlFor='search' className={styles.searchLabel}><img src='/search.png' alt='search' width={"20px"}/></label>
-                <input type="text" id='search' className={styles.searchInput}></input>
-            </div>
+            <Search />
+            <div className={styles.username}>
+                    {user.email && <span className={styles.username}>{user.email}</span>}
+                </div>
             <nav>
-                {user.email && <span>{user.email}</span>}
                 <Link to="/catalog">Всички рецепти</Link>
                 {user.email
                     ? <div id="user">
-                        <Link to="/create">Създаване на рецепта</Link>
+                        <Link to="/create">Нова рецепта</Link>
                         <Link to="/logout">Logout</Link>
                     </div>
                     : <div id="guest">
