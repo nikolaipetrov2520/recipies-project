@@ -11,8 +11,6 @@ const RecipieDetails = () => {
     const [recipie, setRecipie] = useState({})
     const [comments, setcomments] = useState([])
 
-    //const currentGame = selectGame(recipieId);
-
     useEffect(() => {
         (async () => {
             const recipieDetails = await recipieService.getOne(recipieId);
@@ -76,7 +74,7 @@ const RecipieDetails = () => {
                         </div>
                     </div>
                 </div>
-                <h2>Съставки:</h2>
+                <h2>Съставки</h2>
                 <ul className={styles.ingredients}>
                     {recipie.ingredients?.map(x =>
                         <li key={x.name}>
@@ -90,11 +88,11 @@ const RecipieDetails = () => {
                 </p>
 
                 <div className={styles.detailsComments}>
-                    <h2>Коментари:</h2>
+                    <h2>Коментари</h2>
                     <ul>
                         {comments?.map(x =>
-                            <li key={x} className={styles.comment}>
-                                <p>{x}</p>
+                            <li key={x._id} className={styles.comment}>
+                                <p>{x.text}</p>
                             </li>
                         )}
                     </ul>

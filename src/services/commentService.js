@@ -7,7 +7,7 @@ export const create = (recipieId, comment) =>
 
 export const getByRecipieId = (recipieId) => {
     const relations = encodeURIComponent(`user=_ownerId:users`);
-    const search = encodeURIComponent(`gameId="${recipieId}"`);
+    const search = encodeURIComponent(`_recepieId="${recipieId}"`);
 
-    return request.get(`${baseUrl}?where=${search}&load=${relations}`);
+    return request.get(`${baseUrl}?where=${search}`);
 }
