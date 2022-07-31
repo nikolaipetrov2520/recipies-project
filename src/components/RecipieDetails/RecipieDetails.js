@@ -5,11 +5,14 @@ import styles from './RecipieDetails.module.css';
 import * as recipieService from '../../services/recipieService';
 import * as commentService from '../../services/commentService';
 
+import { useAuthContext } from '../../contexts/AuthContext';
+
 const RecipieDetails = () => {
     const navigate = useNavigate();
     const { recipieId } = useParams();
     const [recipie, setRecipie] = useState({})
     const [comments, setcomments] = useState([])
+    const { user } = useAuthContext();
 
     useEffect(() => {
         (async () => {
@@ -114,6 +117,8 @@ const RecipieDetails = () => {
                     </button>
                 </div>
             </div>
+
+            {user.email && 
             <div className={styles.commentBox}>
             <article className={styles.createComment}>
                 <label>Add new comment:</label>
@@ -133,6 +138,8 @@ const RecipieDetails = () => {
                 </form>
             </article>
             </div>
+            }
+            
             
         </section>
     );
