@@ -6,6 +6,8 @@ export const getAll = () => request.get(baseUrl);
 
 export const getOne = (recipieId) => request.get(`${baseUrl}/${recipieId}`);
 
+export const getLatest = () => request.get(`${baseUrl}?sortBy=_createdOn%20desc`);
+
 // export const create = (gameData) => request.post(baseUrl, gameData);
 
 // export const edit = (gameId, gameData) => request.put(`${baseUrl}/${gameId}`, gameData);

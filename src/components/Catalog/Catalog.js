@@ -23,7 +23,7 @@ const Catalog = () => {
     }, [search.search]);
     
     return (
-        
+        <div className={styles.home}>
         <section className={styles.catalogPage}>
             <h1>Всички рецепти</h1>
 
@@ -32,6 +32,7 @@ const Catalog = () => {
                 : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>
             }
         </section>
+        </div>
     );
 };
 

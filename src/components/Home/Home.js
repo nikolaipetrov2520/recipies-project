@@ -1,27 +1,71 @@
 
 import styles from './Home.module.css'
 
-//import LatestGame from "./LatestGame/LatestGame";
+import { useState, useEffect } from 'react';
+import * as recipieService from '../../services/recipieService'
+
+import RecipiesItem from "../Catalog/RecipiesItem/RecipiesItem";
 
 const Home = () => {
+    const [latestRecipies, setLatestRecipies] = useState({});
+    const [recommended, setRecommended] = useState({});
+
+    useEffect(() => {
+        recipieService.getLatest()
+            .then(result => {
+                const latestThree = result.slice(0, 3);
+                setLatestRecipies(latestThree)
+            });
+        recipieService.getAll()
+            .then(result => {
+                const recomendedRecipies = getMultipleRandom(result, 3);
+                setRecommended(recomendedRecipies)
+            })
+
+    }, []);
+
+    function getMultipleRandom(arr, num) {
+        const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      
+        return shuffled.slice(0, num);
+      }
 
     return (
-        <section className={styles.welcome}>
-            <h3>Само в приложението за рецепти</h3>
-            <div className={styles.imgWrapper}>
-                <img className={styles.homeImg} src="/img/pic1.jpg" alt="image1" width={"300px"} height={"150px"} />
-                <img className={styles.homeImg} src="/img/pic2.png" alt="image2" width={"300px"} height={"150px"} />
-            </div>
+        <div className={styles.home}>
+            <h1>Здравейте в приложението за рецепти</h1>
+            <section className={styles.welcome}>
 
-            <div id="home-page">
-                <h1>Последни рецепти</h1>
+                <div className={styles.imgWrapper}>
+                    <img className={styles.homeImg} src="/img/pic2.png" alt="image2" width={"350px"} height={"150px"} />
+                    <img className={styles.homeImg2} src="/img/pic5.png" alt="image5" width={"170px"} height={"150px"} />
+                    <img className={styles.homeImg2} src="/img/pic3.png" alt="image3" width={"170px"} height={"150px"} />
+                    <img className={styles.homeImg} src="/img/pic1.jpg" alt="image1" width={"350px"} height={"150px"} />
+                    <img className={styles.homeImg2} src="/img/pic4.png" alt="image4" width={"140px"} height={"150px"} />
 
-                {/* {games.length > 0
-                    ? games.map(x => <LatestGame key={x._id} game={x} />)
-                    : <p className="no-articles">No games yet</p>
-                } */}
-            </div>
-        </section>
+                </div>
+
+                <div className={styles.latest}>
+                    <h1>Най-новите рецепти</h1>
+                    <div className={styles.latestItems}>
+                        {latestRecipies.length > 0
+                            ? latestRecipies.map(x => <RecipiesItem key={x._id} recipie={x} />)
+                            : <p className="no-articles">Няма нови рецепти</p>
+                        }
+                    </div>
+
+                </div>
+
+                <div className={styles.mostComment}>
+                    <h1>Предложени от нас</h1>
+                    <div className={styles.mostCommentItems}>
+                        {recommended.length > 0
+                            ? recommended.map(x => <RecipiesItem key={x._id} recipie={x} />)
+                            : <p className="no-articles">Няма рецепти</p>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
     );
 }
 

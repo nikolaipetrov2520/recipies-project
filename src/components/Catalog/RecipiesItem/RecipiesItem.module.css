@@ -46,16 +46,16 @@
     align-items: center;
 }
 
-.allRecipiesInfo>h6 {
-    font-size: 15px;
+.allRecipiesInfo h6 {
+    font-size: 12px;
     font-weight: 750;
-    color: #161618;
+    color: #8a3e1a;
 }
 
 .allRecipiesInfo>h2 {
     font-size: 20px;
     font-weight: 750;
-    color: #161618;
+    color: #696969;
 }
 
 .detailsButton {

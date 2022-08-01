@@ -23,7 +23,7 @@ const RecipieDetails = () => {
             setcomments(recipieComments);
             //fetchRecipieDetails(recipieId, { ...recipieDetails, comments: recipieComments.map(x => `${x.user.email}: ${x.text}`) });
         })();
-    }, [])
+    }, [recipieId])
 
     // const addCommentHandler = (e) => {
     //     e.preventDefault();
@@ -55,7 +55,7 @@ const RecipieDetails = () => {
             <div className={styles.infoSection}>
                 <div className={styles.recipieHeader}>
                     <div className={styles.img}>
-                        <img className={styles.recipieImg} src={recipie.image} />
+                        <img className={styles.recipieImg} src={recipie.image} alt="Рецепта" />
                     </div>
                     <div className={styles.info}>
                         <span className={styles.category}>Категория: {recipie.category}</span>
@@ -121,13 +121,13 @@ const RecipieDetails = () => {
             {user.email && 
             <div className={styles.commentBox}>
             <article className={styles.createComment}>
-                <label>Add new comment:</label>
+                <label>Добави коментар</label>
                 <form className={styles.form}
                 //  onSubmit={addCommentHandler}
                 >
                     <textarea
                         name="comment"
-                        placeholder="Comment......"
+                        placeholder="коментар......"
                     />
 
                     <input
