@@ -1,0 +1,152 @@
+
+.home{
+    padding: 50px 0px;
+    position: relative;
+}
+
+.home::after {
+    content: "";
+    background: url("/public/img/background.jpg");
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.createPage {
+    width: 60%;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #628a73;
+    box-shadow: 0px 0px 10px 0px #49535e, 0px 0px 10px #191c21;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+
+#ingredients{
+    color: white;
+    font-size: 27px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ingredientsItemList{
+    border: 1px solid rgb(206, 206, 206);
+    padding: 5px 80px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+#newIngredients{
+    width: 80%;
+}
+
+#ingredientsWrapper{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    border: 1px solid rgb(192, 220, 8);
+    border-radius: 10px;
+    padding: 50px 0px;
+}
+#ingredientsWrapper button{
+  color: white;
+  border: none;
+  background-color: #945330;
+  padding: 10px 20px;
+  margin-top:10px;
+  border-radius: 10px;
+
+}
+
+#ingredientsWrapper button:hover{
+    color: rgb(184, 184, 184);
+    background-color: #784427;
+}
+
+#preparation{
+    width: 80%;
+}
+
+.container>div {
+    width: 45%;
+}
+
+.container>h1{
+    color: white;
+    font-size: 60px;
+    width: 80%;
+}
+
+.createPage input[type="text"],
+.createPage input[type="number"]{
+    background: #ecf0f3;
+    padding: 20px;
+    padding-left: 20px;
+    height: 40px;
+    margin-top: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: inset 6px 6px 6px #c0c2c5, inset -2px -2px 2px white;
+
+}
+
+.createPage textarea {
+    width: 100%;
+    min-width: 20vw;
+    min-height: 7em;
+    border-radius: 10px;
+    font-size: 26px;
+    background-color: #ecf0f3;
+    border-right-color: #ecf0f3;
+    margin-top: 7px;
+    color: black;
+    box-shadow: inset 6px 6px 6px #c0c2c5, inset -2px -2px 4px white;
+}
+
+.ingredient{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingredient input{
+   width: 40%;
+}
+
+.btnSubmit {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background: #945330;
+    height: 60px;
+    border-radius: 10px;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: 0.5s;
+    width: 30%;
+}
+
+.btnSubmit:hover {
+    color: rgb(184, 184, 184);
+    background-color: #784427;
+}

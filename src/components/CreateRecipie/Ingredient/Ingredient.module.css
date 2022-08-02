@@ -1,0 +1,7 @@
+.item{
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    justify-content: left;
+    align-items: center;
+}

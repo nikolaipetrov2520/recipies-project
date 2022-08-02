@@ -10,7 +10,8 @@ import { useState } from 'react';
 import Home from './components/Home/Home'
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
-import Register from './components/Register/Register'
+import Register from './components/Register/Register';
+import CreateRecipie from './components/CreateRecipie/CreateRecipie';
 import Header from './components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import Footer from './components/Footer/Footer';
@@ -37,15 +38,9 @@ function App() {
                   <Register />
                 </Suspense>
               } />
-              {/* <Route path="/create" element={(
-                <PrivateRoute>
-                  <CreateGame />
-                </PrivateRoute>
-              )} /> */}
-              {/* <Route element={<PrivateGuard />}> */}
+              <Route path="/create" element={(<CreateRecipie />)} />
               {/* <Route path="/games/:gameId/edit" element={<EditGame />} /> */}
               <Route path="/logout" element={<Logout />} />
-              {/* </Route> */}
               <Route path="/catalog" element={
                 <Suspense fallback={<span>Loading....</span>}>
                   <Catalog />
