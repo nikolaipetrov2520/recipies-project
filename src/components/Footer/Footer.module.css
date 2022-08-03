@@ -3,6 +3,8 @@ footer{
     padding: 10px;
     text-align: left;
     color: rgb(160, 160, 160);
+    display: flex;
+
 }
 
 span{
@@ -12,4 +14,17 @@ span{
 
 h3{
     padding-left: 30px;
+    width: 85%;
+}
+
+footer div{
+    width: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    gap: 10px;
+}
+footer div i{
+    width: 35%;
 }

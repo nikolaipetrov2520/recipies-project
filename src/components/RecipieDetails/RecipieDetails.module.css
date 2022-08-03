@@ -1,7 +1,7 @@
 #recipieDetails {
     position: relative;
     display: block;
-    width: 75%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
@@ -20,11 +20,8 @@
 }
 
 .infoSection {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-blend-mode: multiply;
-    z-index: 2;
+    margin: auto;
+    width: 90%;
     border-radius: 10px;
     background-color: whitesmoke;
     display: flex;
@@ -32,6 +29,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
+    box-shadow: 0px 0px 10px 0px;
 }
 
 .infoSection h2{
@@ -39,11 +37,10 @@
 }
 
 .recipieHeader {
-    position: relative;
     padding: 25px;
-    height: 40%;
-    width: 100%;
+    width: 90%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgb(206, 206, 206);
@@ -75,18 +72,16 @@
 }
 
 .img{
-    width: 50%;
+    width: 500px;
 }
 
 .recipieImg {
-    position: relative;
-    float: left;
     margin-left: 15px;
     margin-right: 22px;
+    width: 400px;
     height: 320px;
     border-radius: 10px;
     box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
-    margin: auto;
 }
 
 .info{
@@ -95,6 +90,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 300px;
 }
 
 .ingredients {
@@ -103,7 +99,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 60%;
     margin-bottom: 50px;
     border: 1px solid rgb(206, 206, 206);
     padding: 30px;
@@ -118,7 +114,7 @@
     flex-wrap: wrap;
     justify-content: left;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
 .ingredients li p{

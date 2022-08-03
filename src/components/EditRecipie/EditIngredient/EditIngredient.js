@@ -1,9 +1,9 @@
-import styles from './Ingredient.module.css'
+import styles from './EditIngredient.module.css'
 
-const Ingredient = ({
+const EditIngredient = ({
     ingredient,
     onClick
-}
+ }
 ) => {
     return (
         <div className={styles.item}>
@@ -11,9 +11,10 @@ const Ingredient = ({
             <div>{ingredient.name}</div>
             <div> - </div>
             <div>{ingredient.quantity}</div>
+            
         </div>
 
     );
 };
 
-export default Ingredient
+export default EditIngredient

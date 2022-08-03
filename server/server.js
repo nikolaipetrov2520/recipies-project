@@ -1426,6 +1426,47 @@
                     { "name":"олио", "quantity": "200-300 мл"},
                     { "name":"магданоз", "quantity": "1 връзка"}
                 ]
+            },
+            "3f72358f-c3ad-4f8c-831c-a7fa33cdadde": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "title": "Таратор",
+                "category": "Супа",
+                "preparationTime": "10 мин.",
+                "neededTime": "10 мин",
+                "portions": "6",
+                "image": "https://www.foodbook.bg/storage/images/dishes/tarator/main.jpeg",
+                "preparation": "смесваме всичко и охлаждаме в хладилника.",
+                "ingredients": [
+                    {
+                        "name": "картавица",
+                        "quantity": "1 брой"
+                    },
+                    {
+                        "name": "кисело мляко",
+                        "quantity": "1 кофичка"
+                    },
+                    {
+                        "name": "олио",
+                        "quantity": "на вкус"
+                    },
+                    {
+                        "name": "сол",
+                        "quantity": " на вкус"
+                    },
+                    {
+                        "name": "чесън",
+                        "quantity": "1 скилитка"
+                    },
+                    {
+                        "name": "копър",
+                        "quantity": "10 стъка"
+                    },
+                    {
+                        "name": "вода",
+                        "quantity": "0.5 кофички"
+                    }
+                ],
+                "_createdOn": 1659471348372,
             }
         },
         comments: [

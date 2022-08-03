@@ -10,6 +10,6 @@ export const getLatest = () => request.get(`${baseUrl}?sortBy=_createdOn%20desc`
 
 export const create = (recipieData) => request.post(baseUrl, recipieData);
 
-// export const edit = (gameId, gameData) => request.put(`${baseUrl}/${gameId}`, gameData);
+export const edit = (recipieId, recipieData) => request.put(`${baseUrl}/${recipieId}`, recipieData);
 
-// export const remove = (gameId) => request.del(`${baseUrl}/${gameId}`);
+export const remove = (recipieId) => request.del(`${baseUrl}/${recipieId}`);

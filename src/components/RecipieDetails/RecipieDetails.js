@@ -14,12 +14,13 @@ const RecipieDetails = () => {
     const [comments, setcomments] = useState([])
     const { user } = useAuthContext();
 
+    const isOwner = recipie._ownerId === user._id;
+
     useEffect(() => {
         (async () => {
             const recipieDetails = await recipieService.getOne(recipieId);
             setRecipie(recipieDetails)
             const recipieComments = await commentService.getByRecipieId(recipieId);
-            console.log(recipieComments);
             setcomments(recipieComments);
             //fetchRecipieDetails(recipieId, { ...recipieDetails, comments: recipieComments.map(x => `${x.user.email}: ${x.text}`) });
         })();
@@ -37,17 +38,20 @@ const RecipieDetails = () => {
     //         });
     // };
 
-    // const recipieDeleteHandler = () => {
-    //     const confirmation = window.confirm('Are you sure you want to delete this game?');
+    const recipieDeleteHandler = () => {
+        if(!isOwner){
+            navigate('/catalog');
+        }
 
-    //     if (confirmation) {
-    //         gameService.remove(gameId)
-    //             .then(() => {
-    //                 gameRemove(gameId);
-    //                 navigate('/catalog');
-    //             })
-    //     }
-    // }
+        const confirmation = window.confirm('Сигурни ли сте че искате да изтриете рецептата');
+
+        if (confirmation) {
+            recipieService.remove(recipieId)
+                .then(() => {
+                    navigate('/catalog');
+                })
+        }
+    }
 
     return (
         <section id={styles.recipieDetails}>
@@ -81,7 +85,7 @@ const RecipieDetails = () => {
                 <ul className={styles.ingredients}>
                     {recipie.ingredients?.map(x =>
                         <li key={x.name}>
-                            <i className="fa-solid fa-cookie-bite"></i><p>{x.name}</p><p>{x.quantity}</p>
+                            <i className="fa-solid fa-cookie-bite"></i><p>{x.name}</p><p>-</p><p>{x.quantity}</p>
                         </li>
                     )}
                 </ul>
@@ -104,18 +108,20 @@ const RecipieDetails = () => {
                         <p className={styles.noComment}>No comments.</p>
                     }
                 </div>
-
-                <div className={styles.buttons}>
-                    <Link to={`/games/${recipieId}/edit`} className={styles.button}>
+                {isOwner &&
+                    <div className={styles.buttons}>
+                    <Link to={`/recipie/${recipieId}/edit`} className={styles.button}>
                         Edit
                     </Link>
                     <button
-                        // onClick={recipieDeleteHandler}
+                        onClick={recipieDeleteHandler}
                         className={styles.button}
                     >
                         Delete
                     </button>
                 </div>
+                }
+                
             </div>
 
             {user.email && 

@@ -1,15 +1,30 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-import styles from './CreateRecipie.module.css';
-import Ingredient from './Ingredient/Ingredient';
+import styles from './EditRecipie.module.css';
+import EditIngredient from './EditIngredient/EditIngredient';
 import * as recipieService from '../../services/recipieService';
+import { useAuthContext } from '../../contexts/AuthContext';
 
-const CreateRecipie = () => {
+const EditRecipie = () => {
     const navigate = useNavigate();
+    const { user } = useAuthContext();
+    const { recipieId } = useParams();
+    const [recipie, setRecipie] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientQuantity, setIngredientQuantity] = useState('');
+
+    useEffect(() => {
+        (async () => {
+        const recipieDetails = await recipieService.getOne(recipieId);
+        if(recipieDetails._ownerId !== user._id){
+            navigate('/catalog');
+        }
+        setRecipie(recipieDetails);
+        setIngredients(recipieDetails.ingredients);
+    })();
+    }, [recipieId, navigate, user._id]);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -21,8 +36,9 @@ const CreateRecipie = () => {
 
         console.log(recipieData);
 
-        recipieService.create(recipieData)
+        recipieService.edit(recipieId, recipieData)
             .then(result => {
+                console.log(result)
                 navigate(`/catalog/${result._id}`)
             });
     };
@@ -52,7 +68,7 @@ const CreateRecipie = () => {
             <section id="create-page" className={styles.createPage}>
                 <form id="create" onSubmit={onSubmit}>
                     <div className={styles.container}>
-                        <h1>Създай рецепта</h1>
+                        <h1>Редакрирай рецепта</h1>
                         <div>
                             <label htmlFor="leg-title">Име на рецептата</label>
                             <input
@@ -60,6 +76,7 @@ const CreateRecipie = () => {
                                 id="title"
                                 name="title"
                                 placeholder="Въведете име..."
+                                defaultValue={recipie.title}
                             />
                         </div>
                         <div>
@@ -69,6 +86,7 @@ const CreateRecipie = () => {
                                 id="category"
                                 name="category"
                                 placeholder="въведете категория..."
+                                defaultValue={recipie.category}
                             />
                         </div>
 
@@ -79,6 +97,7 @@ const CreateRecipie = () => {
                                 id="preparationTime"
                                 name="preparationTime"
                                 placeholder="Въведете минути..."
+                                defaultValue={recipie.preparationTime}
                             />
                         </div>
 
@@ -89,6 +108,7 @@ const CreateRecipie = () => {
                                 id="neededTime"
                                 name="neededTime"
                                 placeholder="Въведете минути..."
+                                defaultValue={recipie.neededTime}
                             />
                         </div>
 
@@ -100,6 +120,7 @@ const CreateRecipie = () => {
                                 name="portions"
                                 min={1}
                                 placeholder={1}
+                                defaultValue={recipie.portions}
                             />
                         </div>
 
@@ -110,6 +131,7 @@ const CreateRecipie = () => {
                                 id="image"
                                 name="image"
                                 placeholder="Качете снимка..."
+                                defaultValue={recipie.image}
                             />
                         </div>
                         <div id={styles.ingredientsWrapper}>
@@ -140,11 +162,11 @@ const CreateRecipie = () => {
                                 <div className={styles.ingredientsItemList}>
                                     {ingredients.length > 0
                                         ? ingredients.map(x =>
-                                            <Ingredient
+                                        <EditIngredient
                                             key={x.name}
                                             ingredient={x}
                                             onClick={onClickRemoveIngredientHandler}
-                                            />)
+                                        />)
                                         : <h6 className={styles.noArticles}>Няма добавени съставки</h6>
                                     }
                                 </div>
@@ -154,14 +176,17 @@ const CreateRecipie = () => {
 
                         <div id={styles.preparation}>
                             <label htmlFor="preparation">Начин на приготвяне</label>
-                            <textarea name="preparation" id="summary" defaultValue={""} placeholder="Въведете начин на приготвяне..." />
+                            <textarea name="preparation"
+                            id="summary" 
+                            placeholder="Въведете начин на приготвяне..."
+                            defaultValue={recipie.preparation} />
                         </div>
 
 
                         <input
                             className={styles.btnSubmit}
                             type="submit"
-                            value="Създай рецептата"
+                            value="Готово"
                         />
                     </div>
                 </form>
@@ -171,4 +196,4 @@ const CreateRecipie = () => {
     );
 };
 
-export default CreateRecipie;
+export default EditRecipie;
