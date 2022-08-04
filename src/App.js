@@ -25,6 +25,7 @@ function App() {
 
   const [search, setSearch] = useState("");
 
+
   return (
     <AuthProvider>
       <SearchContext.Provider value={{ search, setSearch }}>
@@ -42,10 +43,7 @@ function App() {
               <Route path="/create" element={(<CreateRecipie />)} />
               <Route path="/recipie/:recipieId/edit" element={<EditRecipie />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/catalog" element={
-                <Suspense fallback={<span>Loading....</span>}>
-                  <Catalog />
-                </Suspense>
+              <Route path="/catalog" element={<Catalog />
               } />
               <Route path="/catalog/:recipieId" element={
                 <Suspense fallback={<span>Loading....</span>}>
