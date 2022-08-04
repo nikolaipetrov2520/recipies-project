@@ -27,7 +27,7 @@ const Catalog = () => {
     }, [search.search]);
 
     return (
-        <div >
+        <div className={styles.home}>
             {isLoading
                 ? <div className={styles.loader}>
                     <Circles
@@ -36,7 +36,7 @@ const Catalog = () => {
                         width = "100"
                     />
                 </div>
-                : <div className={styles.home}>
+                : <div>
                     <section className={styles.catalogPage}>
                         <h1>Всички рецепти</h1>
 
