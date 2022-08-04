@@ -7,9 +7,9 @@ const Footer = () => {
                 © 2022 <span>Приложение за рецепти</span>
             </h3>
             <div>
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
+                <i className="fa-brands fa-facebook"></i>
+                <i className="fa-brands fa-instagram"></i>
+                <i className="fa-brands fa-youtube"></i>
             </div>
         </footer>
     );
