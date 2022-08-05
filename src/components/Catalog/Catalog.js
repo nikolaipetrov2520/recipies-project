@@ -17,14 +17,16 @@ const Catalog = () => {
         recipieService.getAll()
             .then(result => {
                 let filter = "";
-                if (search.search.search !== undefined) {
+                if (search !== "") {
                     filter = search.search.toString().toLowerCase();
                     result = result.filter(x => x.title.toLowerCase().includes(filter) || x.category.toLowerCase().includes(filter))
                 }
+                console.log(search.search);
                 setRecipies(result);
                 setIsLoading(false);
             });
-    }, [search.search]);
+    }, [search]);
+
 
     return (
         <div className={styles.home}>
@@ -38,8 +40,11 @@ const Catalog = () => {
                 </div>
                 : <div>
                     <section className={styles.catalogPage}>
-                        <h1>Всички рецепти</h1>
-
+                        {search.search.search === undefined || search.search === ""
+                        ? <h1>Всички рецепти</h1>
+                        : <h1>Търсене за "{search.search}"</h1>
+                        }
+                        
                         {recipies.length > 0
                             ? recipies.map(x => <RecipiesItem key={x._id} recipie={x} />)
                             : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>

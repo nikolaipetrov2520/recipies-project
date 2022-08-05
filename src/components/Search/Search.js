@@ -2,6 +2,7 @@ import styles from './Search.module.css'
 
 import { useState, useContext } from 'react';
 import { SearchContext } from '../../contexts/SearchContext';
+import{ useNavigate } from 'react-router-dom';
 
 
 
@@ -9,27 +10,32 @@ const Search = () => {
 
     let { setSearch } = useContext(SearchContext);
     const [newSearch, setNewSearch] = useState('');
+    const navigate = useNavigate();
 
     const onClickHandler = (e) => {
         e.preventDefault();
-        let searchData = Object.fromEntries(new FormData(e.target));
+        const searchData = Object.fromEntries(new FormData(e.target));
         setSearch(searchData);
         setNewSearch('');
+        navigate('/catalog');
     };
 
     const onChange = (e) => {
         setNewSearch(e.target.value);
+        //setSearch({search: e.target.value});
     };
 
     const clearHandler = (e) => {
         e.preventDefault();
         setNewSearch('');
+        setSearch({search: newSearch});
     };
 
     const searchHandler = (e) => {
         e.preventDefault();
-        setSearch(newSearch);
+        setSearch({search: newSearch});
         setNewSearch('');
+        navigate('/catalog');
     };
 
     return (
