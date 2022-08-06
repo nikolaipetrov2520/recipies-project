@@ -15,15 +15,26 @@
     opacity: 0.5;
     cursor: pointer;
     border: none;
+    font-weight: bold;
+    padding: 0.2em;
+    margin: 0.2em;
+    border-radius: 0.3em;
+    background-color: transparent;
 }
 
 .searchClear{
     position: absolute;
-    top: -4px;
+    top: 1px;
     right: 27px;
     opacity: 0.5;
     cursor: pointer;
     border: none;
+    background-color: red;
+    color: white;
+    padding: 1px 5px 5px 5px;
+    letter-spacing: 0px;
+    border-radius: 100%;
+    line-height: 12px;
 }
 
 .searchInput{

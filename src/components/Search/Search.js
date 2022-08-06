@@ -28,7 +28,6 @@ const Search = () => {
     const clearHandler = (e) => {
         e.preventDefault();
         setNewSearch('');
-        setSearch({search: newSearch});
     };
 
     const searchHandler = (e) => {

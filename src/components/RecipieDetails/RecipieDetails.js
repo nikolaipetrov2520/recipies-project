@@ -10,8 +10,9 @@ import { useAuthContext } from '../../contexts/AuthContext';
 const RecipieDetails = () => {
     const navigate = useNavigate();
     const { recipieId } = useParams();
-    const [recipie, setRecipie] = useState({})
-    const [comments, setcomments] = useState([])
+    const [recipie, setRecipie] = useState({});
+    const [comments, setcomments] = useState([]);
+    const [newComment, setNewComment] = useState('');
     const { user } = useAuthContext();
 
     const isOwner = recipie._ownerId === user._id;
@@ -22,24 +23,27 @@ const RecipieDetails = () => {
             setRecipie(recipieDetails)
             const recipieComments = await commentService.getByRecipieId(recipieId);
             setcomments(recipieComments);
-            //fetchRecipieDetails(recipieId, { ...recipieDetails, comments: recipieComments.map(x => `${x.user.email}: ${x.text}`) });
         })();
     }, [recipieId])
 
-    // const addCommentHandler = (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData(e.target);
+    const addCommentHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
 
-    //     const comment = formData.get('comment');
+        const comment = formData.get('comment');
 
-    //     commentService.create(recipieId, comment)
-    //         .then(result => {
-    //             addComment(recipieId, comment);
-    //         });
-    // };
+        commentService.create(recipieId, comment)
+            .then(result => {
+                setcomments(comment => [...comment, result]);
+            });
+    };
+
+    const onChangeComment = (e) => {
+        setNewComment(e.target.value);
+    };
 
     const recipieDeleteHandler = () => {
-        if(!isOwner){
+        if (!isOwner) {
             navigate('/catalog');
         }
 
@@ -87,7 +91,13 @@ const RecipieDetails = () => {
                         <li key={x.name}>
                             <i className="fa-solid fa-cookie-bite"></i><p>{x.name}</p><p>-</p><p>{x.quantity}</p>
                         </li>
+
                     )}
+                    {recipie.ingredients?.lenght % 2 !== 0
+                        && <li>
+                            <i></i><p></p><p></p><p></p>
+                        </li>
+                    }
                 </ul>
                 <h2>Начин на приготвяне</h2>
                 <p className={styles.text}>
@@ -110,43 +120,45 @@ const RecipieDetails = () => {
                 </div>
                 {isOwner &&
                     <div className={styles.buttons}>
-                    <Link to={`/recipie/${recipieId}/edit`} className={styles.button}>
-                        Edit
-                    </Link>
-                    <button
-                        onClick={recipieDeleteHandler}
-                        className={styles.button}
-                    >
-                        Delete
-                    </button>
-                </div>
+                        <Link to={`/recipie/${recipieId}/edit`} className={styles.button}>
+                            Edit
+                        </Link>
+                        <button
+                            onClick={recipieDeleteHandler}
+                            className={styles.button}
+                        >
+                            Delete
+                        </button>
+                    </div>
                 }
-                
+
             </div>
 
-            {user.email && 
-            <div className={styles.commentBox}>
-            <article className={styles.createComment}>
-                <label>Добави коментар</label>
-                <form className={styles.form}
-                //  onSubmit={addCommentHandler}
-                >
-                    <textarea
-                        name="comment"
-                        placeholder="коментар......"
-                    />
+            {user.email &&
+                <div className={styles.commentBox}>
+                    <article className={styles.createComment}>
+                        <label>Добави коментар</label>
+                        <form className={styles.form}
+                            onSubmit={addCommentHandler}
+                        >
+                            <textarea
+                                name="comment"
+                                placeholder="коментар......"
+                                value={newComment}
+                                onChange={onChangeComment}
+                            />
 
-                    <input
-                        className={styles.btnSubmit}
-                        type="submit"
-                        value="Add Comment"
-                    />
-                </form>
-            </article>
-            </div>
+                            <input
+                                className={styles.btnSubmit}
+                                type="submit"
+                                value="Add Comment"
+                            />
+                        </form>
+                    </article>
+                </div>
             }
-            
-            
+
+
         </section>
     );
 };

@@ -1,15 +1,23 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './CreateRecipie.module.css';
 import Ingredient from './Ingredient/Ingredient';
 import * as recipieService from '../../services/recipieService';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 const CreateRecipie = () => {
     const navigate = useNavigate();
+    const { user } = useAuthContext();
     const [ingredients, setIngredients] = useState([]);
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientQuantity, setIngredientQuantity] = useState('');
+
+    useEffect(() => {
+        if(user.email === undefined){
+            navigate('/catalog');
+        }
+    }, []);
 
     const onSubmit = (e) => {
         e.preventDefault();

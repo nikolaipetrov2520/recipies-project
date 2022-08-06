@@ -18,6 +18,7 @@
 
 .createPage {
     width: 60%;
+    margin: auto;
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;

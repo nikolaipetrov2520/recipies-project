@@ -21,7 +21,6 @@ const Catalog = () => {
                     filter = search.search.toString().toLowerCase();
                     result = result.filter(x => x.title.toLowerCase().includes(filter) || x.category.toLowerCase().includes(filter))
                 }
-                console.log(search.search);
                 setRecipies(result);
                 setIsLoading(false);
             });

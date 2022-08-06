@@ -11,6 +11,7 @@ header h1.logo{
     align-items: center;
     color: white;
     width: 40%;
+    margin: 0px;
 }
 
 a{
@@ -41,6 +42,15 @@ nav a:hover{
     color: yellow;
 }
 
+.navOpen{
+    color: white;
+}
+
+.navClose{
+    color: white;
+}
+
+
 header img {
     margin: 0px;
 }
@@ -53,6 +63,41 @@ header img {
     text-align: right;
 }
 
+.menuButton {
+    display: none; 
+    color: white;
+    left: 50px;
+    top: 18px;
+    position: absolute;
+}
+
+.menuButton:hover {
+    color: yellow;
+}
+
+.open{
+    transform: rotate(90deg);
+    font-size: 30px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    letter-spacing: 0px;
+    line-height: 25px;
+    padding: 8px 12px 14px 12px;
+    cursor: pointer;
+}
+
+.close{
+    font-size: 30px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    letter-spacing: 0px;
+    line-height: 25px;
+    padding: 8px 15px 14px 15px;
+    cursor: pointer;
+}
+
+
+
 @media (max-width: 1400px){
     header h1.logo{
         width: 20%;
@@ -60,15 +105,35 @@ header img {
 }
 
 @media (max-width: 1000px){
+    .navOpen{
+        position: absolute;
+        background-color: rgb(31, 142, 130);
+        top: 80px;
+        left: 0px;
+        z-index: 10;
+        border-radius: 10px;
+        padding: 20px;
+        font-size: 25px;
+        width: 400px;
+    }
+    
+    .navClose{
+        display: none;
+    }
+
     header{
         flex-direction: column;
         gap: 15px;
-        padding: 20px;
+        position: relative;
+    }
+    .menuButton{
+        display: block;
     }
     nav{
         flex-direction: column;
         gap: 10px;
         justify-content: center;
+        /* display: none; */
     }
     nav div{
         flex-direction: column;
