@@ -12,9 +12,11 @@ const CreateRecipie = () => {
     const [ingredients, setIngredients] = useState([]);
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientQuantity, setIngredientQuantity] = useState('');
+    const [validateMessageStyle, setValidateMessageStyle] = useState("none");
+    const [ingredientValidateMessageStyle, setIngredientValidateMessageStyle] = useState("none");
 
     useEffect(() => {
-        if(user.email === undefined){
+        if (user.email === undefined) {
             navigate('/catalog');
         }
     }, []);
@@ -27,19 +29,38 @@ const CreateRecipie = () => {
         delete recipieData.ingredientquantity;
         recipieData.ingredients = ingredients;
 
-        console.log(recipieData);
+        if (recipieData.category !== ""
+            && recipieData.image !== ""
+            && recipieData.neededTime !== ""
+            && recipieData.portions !== ""
+            && recipieData.preparation !== ""
+            && recipieData.preparationTime !== ""
+            && recipieData.title !== ""
+            && recipieData.ingredients.length > 0) {
+                console.log(recipieData);
+            setValidateMessageStyle("block");
+            recipieService.create(recipieData)
+                .then(result => {
+                    navigate(`/catalog/${result._id}`)
+                });
+        } else {
+            setValidateMessageStyle("block");
+        }
 
-        recipieService.create(recipieData)
-            .then(result => {
-                navigate(`/catalog/${result._id}`)
-            });
     };
 
     const addIngredientHandler = (e) => {
-        const newIngredient = { 'name': ingredientName, 'quantity': ingredientQuantity };
-        setIngredients(ingredients => [...ingredients, newIngredient])
-        setIngredientName('');
-        setIngredientQuantity('');
+        if(ingredientName !== "" && ingredientQuantity !== ""){
+            setIngredientValidateMessageStyle("none")
+            const newIngredient = { 'name': ingredientName, 'quantity': ingredientQuantity };
+            setIngredients(ingredients => [...ingredients, newIngredient])
+            setIngredientName('');
+            setIngredientQuantity('');
+        } else{
+            setIngredientValidateMessageStyle("block")
+        }
+
+        
     }
 
     const onCahngeIngredientsName = (e) => {
@@ -58,9 +79,11 @@ const CreateRecipie = () => {
 
         <div className={styles.home}>
             <section id="create-page" className={styles.createPage}>
+                <h1>Създай рецепта</h1>
+                <p style={{ display: validateMessageStyle }}>Всички полета трябва да бъдат попълнени!!!</p>
                 <form id="create" onSubmit={onSubmit}>
                     <div className={styles.container}>
-                        <h1>Създай рецепта</h1>
+
                         <div>
                             <label htmlFor="leg-title">Име на рецептата</label>
                             <input
@@ -121,6 +144,7 @@ const CreateRecipie = () => {
                             />
                         </div>
                         <div id={styles.ingredientsWrapper}>
+                        <p style={{ display: ingredientValidateMessageStyle }}>Съставките трабва да имат попълнено име и количество</p>
                             <div id={styles.newIngredients}>
                                 <label htmlFor="ingredient">Добави съставка</label>
                                 <div className={styles.ingredient}>
@@ -149,9 +173,9 @@ const CreateRecipie = () => {
                                     {ingredients.length > 0
                                         ? ingredients.map(x =>
                                             <Ingredient
-                                            key={x.name}
-                                            ingredient={x}
-                                            onClick={onClickRemoveIngredientHandler}
+                                                key={x.name}
+                                                ingredient={x}
+                                                onClick={onClickRemoveIngredientHandler}
                                             />)
                                         : <h6 className={styles.noArticles}>Няма добавени съставки</h6>
                                     }

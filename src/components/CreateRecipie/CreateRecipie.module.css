@@ -17,12 +17,17 @@
 }
 
 .createPage {
+    position: relative;
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0px auto;
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;
-    background: #547662;
+    background: rgb(31 142 130 / 90%);
     box-shadow: 0px 0px 10px 0px #49535e, 0px 0px 10px #191c21;
 }
 
@@ -45,7 +50,7 @@
 
 .ingredientsItemList{
     border: 1px solid rgb(206, 206, 206);
-    padding: 5px 80px;
+    padding: 20px 80px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -57,8 +62,21 @@
     width: 80%;
 }
 
+#ingredientsWrapper>p{
+    top: 10px;
+    left: 250px;
+    position: absolute;
+    color: rgb(255, 5, 5);
+    font-size: 18px;
+    background-color: yellow;
+    padding:  3px 20px;
+    border-radius: 5px;
+    border: 1px solid red;
+}
+
 #ingredientsWrapper{
     width: 90%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,10 +109,23 @@
     width: 45%;
 }
 
-.container>h1{
+.createPage>h1{
     color: white;
     font-size: 60px;
     width: 80%;
+    margin-bottom: 50px;
+}
+
+.createPage>p{
+    bottom: 130px;
+    left: 350px;
+    position: absolute;
+    color: rgb(255, 5, 5);
+    font-size: 20px;
+    background-color: yellow;
+    padding:  3px 20px;
+    border-radius: 5px;
+    border: 1px solid red;
 }
 
 .createPage input[type="text"],
@@ -112,6 +143,7 @@
 
 .createPage textarea {
     width: 100%;
+    padding: 10px 20px;
     min-width: 20vw;
     min-height: 7em;
     border-radius: 10px;

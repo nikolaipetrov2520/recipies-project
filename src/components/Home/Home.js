@@ -44,7 +44,7 @@ const Home = () => {
                         width="100"
                     />
                 </div>
-                : <div><h1>Здравейте в приложението за рецепти</h1>
+                : <div><h1>Добре дошли в приложението за рецепти</h1>
                     <section className={styles.welcome}>
 
                         <div className={styles.imgWrapper}>

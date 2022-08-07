@@ -16,7 +16,7 @@
     z-index: -1;   
 }
 
-.home>h1{
+.home>div>h1{
     background-color: rgb(106, 122, 88);
     color: rgb(240, 240, 240);
     width: 70%;

@@ -14,16 +14,17 @@ const EditRecipie = () => {
     const [ingredients, setIngredients] = useState([]);
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientQuantity, setIngredientQuantity] = useState('');
+    const [validateMessageStyle, setValidateMessageStyle] = useState("none");
 
     useEffect(() => {
         (async () => {
-        const recipieDetails = await recipieService.getOne(recipieId);
-        if(recipieDetails._ownerId !== user._id){
-            navigate('/catalog');
-        }
-        setRecipie(recipieDetails);
-        setIngredients(recipieDetails.ingredients);
-    })();
+            const recipieDetails = await recipieService.getOne(recipieId);
+            if (recipieDetails._ownerId !== user._id) {
+                navigate('/catalog');
+            }
+            setRecipie(recipieDetails);
+            setIngredients(recipieDetails.ingredients);
+        })();
     }, [recipieId, navigate, user._id]);
 
     const onSubmit = (e) => {
@@ -34,13 +35,25 @@ const EditRecipie = () => {
         delete recipieData.ingredientquantity;
         recipieData.ingredients = ingredients;
 
-        console.log(recipieData);
+        if (recipieData.category !== ""
+            && recipieData.image !== ""
+            && recipieData.neededTime !== ""
+            && recipieData.portions !== ""
+            && recipieData.preparation !== ""
+            && recipieData.preparationTime !== ""
+            && recipieData.title !== ""
+            && recipieData.ingredients.length > 0) {
+            console.log(recipieData);
+            setValidateMessageStyle("block");
+            recipieService.edit(recipieId, recipieData)
+                .then(result => {
+                    console.log(result)
+                    navigate(`/catalog/${result._id}`)
+                });
+        } else {
+            setValidateMessageStyle("block");
+        }
 
-        recipieService.edit(recipieId, recipieData)
-            .then(result => {
-                console.log(result)
-                navigate(`/catalog/${result._id}`)
-            });
     };
 
     const addIngredientHandler = (e) => {
@@ -65,10 +78,11 @@ const EditRecipie = () => {
     return (
 
         <div className={styles.home}>
-            <section id="create-page" className={styles.createPage}>
+            <section id="create-page" className={styles.editPage}>
+                <h1>Редакрирай рецепта</h1>
+                <p style={{ display: validateMessageStyle }} >Всички полета трябва да бъдат попълнени!!!</p>
                 <form id="create" onSubmit={onSubmit}>
                     <div className={styles.container}>
-                        <h1>Редакрирай рецепта</h1>
                         <div>
                             <label htmlFor="leg-title">Име на рецептата</label>
                             <input
@@ -162,11 +176,11 @@ const EditRecipie = () => {
                                 <div className={styles.ingredientsItemList}>
                                     {ingredients.length > 0
                                         ? ingredients.map(x =>
-                                        <EditIngredient
-                                            key={x.name}
-                                            ingredient={x}
-                                            onClick={onClickRemoveIngredientHandler}
-                                        />)
+                                            <EditIngredient
+                                                key={x.name}
+                                                ingredient={x}
+                                                onClick={onClickRemoveIngredientHandler}
+                                            />)
                                         : <h6 className={styles.noArticles}>Няма добавени съставки</h6>
                                     }
                                 </div>
@@ -177,9 +191,9 @@ const EditRecipie = () => {
                         <div id={styles.preparation}>
                             <label htmlFor="preparation">Начин на приготвяне</label>
                             <textarea name="preparation"
-                            id="summary" 
-                            placeholder="Въведете начин на приготвяне..."
-                            defaultValue={recipie.preparation} />
+                                id="summary"
+                                placeholder="Въведете начин на приготвяне..."
+                                defaultValue={recipie.preparation} />
                         </div>
 
 
