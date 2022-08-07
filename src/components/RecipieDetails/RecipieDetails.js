@@ -33,14 +33,14 @@ const RecipieDetails = () => {
 
     const addCommentHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-
-        const comment = formData.get('comment');
-
-        commentService.create(recipieId, comment)
+        if(newComment !== ""){
+            commentService.create(recipieId, newComment)
             .then(result => {
                 setcomments(comment => [...comment, result]);
+                setNewComment('');
             });
+        }
+       
     };
 
     const onChangeComment = (e) => {

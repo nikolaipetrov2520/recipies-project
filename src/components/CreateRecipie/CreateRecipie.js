@@ -19,7 +19,7 @@ const CreateRecipie = () => {
         if (user.email === undefined) {
             navigate('/catalog');
         }
-    }, []);
+    }, [user.email, navigate]);
 
     const onSubmit = (e) => {
         e.preventDefault();
