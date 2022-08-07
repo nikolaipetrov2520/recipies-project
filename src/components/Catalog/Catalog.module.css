@@ -17,6 +17,7 @@
 }
 
 .catalogPage {
+    position: relative;
     box-shadow: 0px 0px 20px 0px;
     overflow: hidden;
     border-radius: 10px;
@@ -30,6 +31,13 @@
     background-color: rgba(235, 234, 234, 0.79);
 }
 
+.recipieCount{
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    font-size: 12px;
+}
+
 .catalogPage>h1 {
     color: rgb(141, 84, 56);
     font-family: "Agency FB";
@@ -40,6 +48,49 @@
     text-align: center;
     width: 100%;
     margin-bottom: 40px;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.paginationList{
+    width: 10%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    
+}
+
+.paginationList li{
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(31, 142, 130);
+    cursor: pointer;
+}
+.paginationList li a{
+    background-color: rgb(31, 142, 130);
+    color: rgb(219, 219, 219);
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.paginationList .active>a{
+    font-weight: bold;
+    color: white;
+}
+
+.paginationList .activeArrow>a{
+    font-weight: bold;
+    color: rgb(219, 219, 219);
+}
+.paginationList .inactiveArrow>a{
+    font-weight: bold;
+    color: rgb(93, 93, 93);
 }
 
 @media screen and (max-width: 1300px){

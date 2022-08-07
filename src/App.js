@@ -43,13 +43,9 @@ function App() {
               <Route path="/create" element={(<CreateRecipie />)} />
               <Route path="/recipie/:recipieId/edit" element={<EditRecipie />} />
               <Route path="/logout" element={<Logout />} />
-              <Route path="/catalog" element={<Catalog />
-              } />
-              <Route path="/catalog/:recipieId" element={
-                <Suspense fallback={<span>Loading....</span>}>
-                  <RecipieDetails />
-                </Suspense>
-              } />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/catalog/?page" element={<Catalog />} />
+              <Route path="/catalog/:recipieId" element={<RecipieDetails />} />
             </Routes>
           </main>
           <Footer />
