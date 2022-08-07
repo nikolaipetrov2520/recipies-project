@@ -154,7 +154,7 @@
     padding: 14px;
     font-size: 21px;
     color: rgb(255, 255, 255);
-    width: 20%;
+    width: 30%;
     border-radius: 5px;
 }
 
@@ -275,6 +275,38 @@
 
 .loader{
     margin: 310px 0px;
+}
+
+.likes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.likesInfo{
+    border: 1px solid #bbbbbb;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #8f8f8f;
+}
+
+.likeBtn{
+    margin: 0px;
+    color: white;
+    background-color: #684921;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-size: 15px;
+}
+
+.likeBtn:hover {
+  color: rgb(203, 203, 203);
+  background-color: #4f3719;
 }
 
 @media (max-width: 1200px){

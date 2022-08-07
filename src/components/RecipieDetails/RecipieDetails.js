@@ -6,6 +6,7 @@ import { Oval } from 'react-loader-spinner';
 
 import * as recipieService from '../../services/recipieService';
 import * as commentService from '../../services/commentService';
+import * as likeService from '../../services/likeService';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 
@@ -13,7 +14,8 @@ const RecipieDetails = () => {
     const navigate = useNavigate();
     const { recipieId } = useParams();
     const [recipie, setRecipie] = useState({});
-    const [comments, setcomments] = useState([]);
+    const [comments, setComments] = useState([]);
+    const [likes, setLikes] = useState([]);
     const [newComment, setNewComment] = useState('');
     const { user } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
@@ -26,21 +28,23 @@ const RecipieDetails = () => {
             const recipieDetails = await recipieService.getOne(recipieId);
             setRecipie(recipieDetails)
             const recipieComments = await commentService.getByRecipieId(recipieId);
-            setcomments(recipieComments);
+            setComments(recipieComments);
+            const recipieLikes = await likeService.getByRecipieId(recipieId);
+            setLikes(recipieLikes);
             setIsLoading(false);
         })();
     }, [recipieId])
 
     const addCommentHandler = (e) => {
         e.preventDefault();
-        if(newComment !== ""){
+        if (newComment !== "") {
             commentService.create(recipieId, newComment)
-            .then(result => {
-                setcomments(comment => [...comment, result]);
-                setNewComment('');
-            });
+                .then(result => {
+                    setComments(comment => [...comment, result]);
+                    setNewComment('');
+                });
         }
-       
+
     };
 
     const onChangeComment = (e) => {
@@ -60,7 +64,20 @@ const RecipieDetails = () => {
                     navigate('/catalog');
                 })
         }
-    }
+    };
+
+    const likeOnClick = () => {
+        likeService.create(recipieId)
+        .then(result => {
+            setLikes(likes => [...likes , result])
+        })
+    };
+
+    const dislikeOnClick = () => {
+        const likeId = likes.find(x => x._ownerId === user._id && x.recipieId === recipieId)._id;
+        likeService.remove(likeId)
+        setLikes(likes.filter(x => x._id !== likeId));
+    };
 
     return (
         <section id={styles.recipieDetails}>
@@ -97,6 +114,17 @@ const RecipieDetails = () => {
                                         <div>{recipie.portions}</div>
                                     </div>
                                 </div>
+                            </div>
+                            <div className={styles.likes}>
+                                <div className={styles.likesInfo}>Харесваня {likes.length}</div>
+                                {user.email && <div>
+                                    {likes.some(x => x._ownerId === user._id)
+                                        ? <button className={styles.likeBtn} onClick={dislikeOnClick}>Не харесвам</button>
+                                        : <button className={styles.likeBtn} onClick={likeOnClick}>Харесвам</button>
+                                    }
+                                </div>}
+
+
                             </div>
                         </div>
                         <h2>Съставки</h2>
@@ -135,13 +163,13 @@ const RecipieDetails = () => {
                         {isOwner &&
                             <div className={styles.buttons}>
                                 <Link to={`/recipie/${recipieId}/edit`} className={styles.button}>
-                                    Edit
+                                    Редактиране
                                 </Link>
                                 <button
                                     onClick={recipieDeleteHandler}
                                     className={styles.button}
                                 >
-                                    Delete
+                                    Изтриване
                                 </button>
                             </div>
                         }
@@ -165,7 +193,7 @@ const RecipieDetails = () => {
                                     <input
                                         className={styles.btnSubmit}
                                         type="submit"
-                                        value="Add Comment"
+                                        value="Добави коментара"
                                     />
                                 </form>
                             </article>
