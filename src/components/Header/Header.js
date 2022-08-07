@@ -36,7 +36,7 @@ const Header = () => {
                     Рецепти
                 </Link>
             </h1>
-            <Search />
+            <Search menu={nemuButton} />
             <div className={styles.username}>
                 {user.email && <span className={styles.username}>{user.email}</span>}
             </div>

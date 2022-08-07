@@ -1,16 +1,28 @@
 import styles from './Search.module.css'
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { SearchContext } from '../../contexts/SearchContext';
 import{ useNavigate } from 'react-router-dom';
 
 
 
-const Search = () => {
+const Search = ({
+    menu
+}) => {
 
     let { setSearch } = useContext(SearchContext);
     const [newSearch, setNewSearch] = useState('');
+    const [navBtnClass, setNavBtnClass] = useState(styles.navBtnClose);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(menu === "close") {
+            setNavBtnClass(styles.navBtnOpen);
+        } else if(menu === "open") {
+            setNavBtnClass(styles.navBtnClose);
+        }
+        
+    }, [menu]);
 
     const onClickHandler = (e) => {
         e.preventDefault();
@@ -38,13 +50,13 @@ const Search = () => {
     };
 
     return (
-        <div className={styles.search}>
+        <div className={navBtnClass}>
             <form onSubmit={onClickHandler}>
                 <input
                     type="text"
                     id='search'
                     className={styles.searchInput}
-                    placeholder='search'
+                    placeholder='търсене...'
                     value={newSearch}
                     onChange={onChange}
                     name='search'>
