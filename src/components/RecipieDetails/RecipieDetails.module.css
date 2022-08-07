@@ -9,7 +9,7 @@
     margin: 50px auto;
 }
 
-#recipieDetails>h1 {
+#recipieDetails>div>h1 {
     color: rgb(141, 84, 56);
     font-family: "Agency FB";
     font-size: 45px;
@@ -271,4 +271,19 @@
 .btnSubmit:hover{
     color: rgb(204, 203, 203);
     background-color: rgb(68, 68, 68);
+}
+
+.loader{
+    margin: 310px 0px;
+}
+
+@media (max-width: 1200px){
+    .ingredients {
+        flex-direction: column;
+    }
+
+    .ingredients li{
+        width: 100%;
+        
+    }
 }

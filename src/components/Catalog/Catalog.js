@@ -1,5 +1,5 @@
 import styles from './Catalog.module.css';
-import { Circles } from 'react-loader-spinner'
+import { Oval } from 'react-loader-spinner';
 
 import { useState, useEffect, useContext } from "react";
 import { SearchContext } from '../../contexts/SearchContext';
@@ -26,12 +26,11 @@ const Catalog = () => {
             });
     }, [search]);
 
-
     return (
         <div className={styles.home}>
             {isLoading
                 ? <div className={styles.loader}>
-                    <Circles
+                    <Oval
                         color="#3fa37f" 
                         height = "100"
                         width = "100"

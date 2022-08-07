@@ -88,3 +88,7 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+
+.loader{
+    margin: 310px 0px;
+}
