@@ -2,7 +2,9 @@ import * as request from "./requester";
 
 const baseUrl = 'http://localhost:3030/data/recipies';
 
-export const getAll = (offset) => request.get(`${baseUrl}?offset=${offset}&pageSize=${6}`);
+export const getAll = () => request.get(baseUrl);
+
+export const getAllPaging = (offset) => request.get(`${baseUrl}?offset=${offset}&pageSize=${6}`);
 
 export const getCount = () => request.get(`${baseUrl}?count`);
 

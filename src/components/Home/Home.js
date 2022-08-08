@@ -16,12 +16,12 @@ const Home = () => {
         setIsLoading(true);
         recipieService.getLatest()
             .then(result => {
-                const latestThree = result.slice(0, 3);
+                const latestThree = result.slice(0, 2);
                 setLatestRecipies(latestThree)
             });
         recipieService.getAll()
             .then(result => {
-                const recomendedRecipies = getMultipleRandom(result, 3);
+                const recomendedRecipies = getMultipleRandom(result,2);
                 setRecommended(recomendedRecipies);
                 setIsLoading(false);
             })
