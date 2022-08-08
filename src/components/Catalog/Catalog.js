@@ -27,12 +27,17 @@ const Catalog = () => {
             setRecipieCount(count);
             setPageCount(Math.ceil(count / 6));
 
-            let currentRecipies = await recipieService.getAllPaging(offset);
-            if (search !== "") {
+            
+            if (search.search !== "") {
+                let currentRecipies = await recipieService.getAll();
                 const filter = search.search.toString().toLowerCase();
                 currentRecipies = currentRecipies.filter(x => x.title.toLowerCase().includes(filter) || x.category.toLowerCase().includes(filter))
+                setRecipies(currentRecipies);
+            } else {
+                const currentRecipies = await recipieService.getAllPaging(offset);
+                setRecipies(currentRecipies);
             }
-            setRecipies(currentRecipies);
+            
 
             setIsLoading(false);
         })();
@@ -52,133 +57,153 @@ const Catalog = () => {
                 </div>
                 : <><div className={styles.pagination}>
                     {search.search.search === undefined || search.search === ""
-                    ? <ul className={styles.paginationList}>
-                    <li className={styles.activeArrow}>
-                        <Link to={'?page=1'}>
-                            <i className="fa-solid fa-angles-left"></i>
-                        </Link>
-                    </li>
-                    {currentPage < 2
-                        ? <li className={styles.inactiveArrow}>
-                            <Link to={'?page=1'}>
-                                <i className="fa-solid fa-chevron-left"></i>
-                            </Link>
-                        </li>
-                        : <li className={styles.activeArrow}>
-                            <Link to={`?page=${currentPage - 1}`}>
-                                <i className="fa-solid fa-chevron-left"></i>
-                            </Link>
-                        </li>
-                    }
-                    <div className={styles.pageNumbers}>
-                        {pageCount > 2
-                            ? <> {currentPage > 1
-                                ?
-                                <> {currentPage < pageCount
-                                    ? <>
-                                        <li>
-                                            <Link to={`?page=${currentPage - 1}`}>
-                                                {currentPage - 1}
-                                            </Link>
-                                        </li>
-                                        <li className={styles.active}>
-                                            <Link to={`?page=${currentPage}`}>
-                                                {currentPage}
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to={`?page=${currentPage + 1}`}>
-                                                {currentPage + 1}
-                                            </Link>
-                                        </li>
-                                    </>
-                                    : <>
-                                        <li>
-                                            <Link to={`?page=${currentPage - 2}`}>
-                                                {currentPage - 2}
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to={`?page=${currentPage - 1}`}>
-                                                {currentPage - 1}
-                                            </Link>
-                                        </li>
-                                        <li className={styles.active}>
-                                            <Link to={`?page=${currentPage}`}>
-                                                {currentPage}
-                                            </Link>
-                                        </li>
-                                    </>
-                                }
-
+                        ? <ul className={styles.paginationList}>
+                            {currentPage < 2
+                                ? <>
+                                    <li className={styles.inactiveArrow}>
+                                        <Link to={'?page=1'}>
+                                            <i className="fa-solid fa-angles-left"></i>
+                                        </Link>
+                                    </li>
+                                    <li className={styles.inactiveArrow}>
+                                        <Link to={'?page=1'}>
+                                            <i className="fa-solid fa-chevron-left"></i>
+                                        </Link>
+                                    </li>
                                 </>
                                 : <>
-                                    <li className={styles.active}>
-                                        <Link to={`?page=${currentPage}`}>
-                                            {currentPage}
+                                    <li className={styles.activeArrow}>
+                                        <Link to={'?page=1'}>
+                                            <i className="fa-solid fa-angles-left"></i>
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link to={`?page=${currentPage + 1}`}>
-                                            {currentPage + 1}
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to={`?page=${currentPage + 2}`}>
-                                            {currentPage + 2}
+                                    <li className={styles.activeArrow}>
+                                        <Link to={`?page=${currentPage - 1}`}>
+                                            <i className="fa-solid fa-chevron-left"></i>
                                         </Link>
                                     </li>
                                 </>
                             }
-                            </>
-                            : <>
-                                {currentPage > 1
-                                    ? <li>
-                                        <Link to={`?page=${currentPage - 1}`}>
-                                            {currentPage - 1}
-                                        </Link>
-                                    </li>
-                                    : <div></div>
-                                }
-                                <li className={styles.active}>
-                                    <Link to={`?page=${currentPage}`}>
-                                        {currentPage}
-                                    </Link>
-                                </li>
-                                {currentPage + 1 <= pageCount
-                                    ? <li>
-                                        <Link to={`?page=${currentPage + 1}`}>
-                                            {currentPage + 1}
-                                        </Link>
-                                    </li>
-                                    : <div></div>
-                                }
+                            <div className={styles.pageNumbers}>
+                                {pageCount > 2
+                                    ? <> {currentPage > 1
+                                        ?
+                                        <> {currentPage < pageCount
+                                            ? <>
+                                                <li>
+                                                    <Link to={`?page=${currentPage - 1}`}>
+                                                        {currentPage - 1}
+                                                    </Link>
+                                                </li>
+                                                <li className={styles.active}>
+                                                    <Link to={`?page=${currentPage}`}>
+                                                        {currentPage}
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={`?page=${currentPage + 1}`}>
+                                                        {currentPage + 1}
+                                                    </Link>
+                                                </li>
+                                            </>
+                                            : <>
+                                                <li>
+                                                    <Link to={`?page=${currentPage - 2}`}>
+                                                        {currentPage - 2}
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to={`?page=${currentPage - 1}`}>
+                                                        {currentPage - 1}
+                                                    </Link>
+                                                </li>
+                                                <li className={styles.active}>
+                                                    <Link to={`?page=${currentPage}`}>
+                                                        {currentPage}
+                                                    </Link>
+                                                </li>
+                                            </>
+                                        }
 
-                            </>
-                        }
-                    </div>
-                    {currentPage >= pageCount
-                        ? <li className={styles.inactiveArrow}>
-                            <Link to={`?page=${currentPage}`}>
-                                <i className="fa-solid fa-chevron-right"></i>
-                            </Link>
-                        </li>
-                        : <li className={styles.activeArrow}>
-                            <Link to={`?page=${currentPage + 1}`}>
-                                <i className="fa-solid fa-chevron-right"></i>
-                            </Link>
-                        </li>
+                                        </>
+                                        : <>
+                                            <li className={styles.active}>
+                                                <Link to={`?page=${currentPage}`}>
+                                                    {currentPage}
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`?page=${currentPage + 1}`}>
+                                                    {currentPage + 1}
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to={`?page=${currentPage + 2}`}>
+                                                    {currentPage + 2}
+                                                </Link>
+                                            </li>
+                                        </>
+                                    }
+                                    </>
+                                    : <>
+                                        {currentPage > 1
+                                            ? <li>
+                                                <Link to={`?page=${currentPage - 1}`}>
+                                                    {currentPage - 1}
+                                                </Link>
+                                            </li>
+                                            : <div></div>
+                                        }
+                                        <li className={styles.active}>
+                                            <Link to={`?page=${currentPage}`}>
+                                                {currentPage}
+                                            </Link>
+                                        </li>
+                                        {currentPage + 1 <= pageCount
+                                            ? <li>
+                                                <Link to={`?page=${currentPage + 1}`}>
+                                                    {currentPage + 1}
+                                                </Link>
+                                            </li>
+                                            : <></>
+                                        }
+
+                                    </>
+                                }
+                            </div>
+                            {currentPage >= pageCount
+                                ? <>
+                                    <li className={styles.inactiveArrow}>
+                                        <Link to={`?page=${currentPage}`}>
+                                            <i className="fa-solid fa-chevron-right"></i>
+                                        </Link>
+                                    </li>
+                                    <li className={styles.inactiveArrow}>
+                                        <Link to={`?page=${pageCount}`}>
+                                            <i className="fa-solid fa-angles-right"></i>
+                                        </Link>
+                                    </li>
+                                </>
+
+                                : <>
+                                    <li className={styles.activeArrow}>
+                                        <Link to={`?page=${currentPage + 1}`}>
+                                            <i className="fa-solid fa-chevron-right"></i>
+                                        </Link>
+                                    </li>
+                                    <li className={styles.activeArrow}>
+                                        <Link to={`?page=${pageCount}`}>
+                                            <i className="fa-solid fa-angles-right"></i>
+                                        </Link>
+                                    </li>
+                                </>
+                            }
+
+
+                        </ul>
+                        : <></>
                     }
 
-                    <li className={styles.activeArrow}>
-                        <Link to={`?page=${pageCount}`}>
-                            <i className="fa-solid fa-angles-right"></i>
-                        </Link>
-                    </li>
-                </ul>
-                :<div></div>
-                }
-                    
                 </div>
                     <div>
 

@@ -70,7 +70,7 @@
     display: flex;
     justify-content: center;
     gap: 3px;
-    margin: 0px 5px;
+    margin: 0px 7px;
 }
 
 .paginationList li{
@@ -81,12 +81,17 @@
     cursor: pointer;
 }
 
+.paginationList li:hover{
+    background-color: rgb(43, 173, 163);
+    box-shadow: 0px 0px 1px 0px;
+    
+}
+
 .pageNumbers li{
     padding: 5px 7px;
 }
 
 .paginationList li a{
-    background-color: rgb(31, 142, 130);
     color: rgb(219, 219, 219);
     cursor: pointer;
     font-weight: normal;
@@ -104,6 +109,11 @@
 .paginationList .inactiveArrow>a{
     font-weight: bold;
     color: rgb(93, 93, 93);
+}
+
+.paginationList .inactiveArrow:hover{
+    background-color: rgb(31, 142, 130);
+    box-shadow: 0px 0px 0px 0px;
 }
 
 @media screen and (max-width: 1300px){
