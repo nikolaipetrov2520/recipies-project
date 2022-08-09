@@ -7,6 +7,7 @@ import { Oval } from 'react-loader-spinner';
 import * as recipieService from '../../services/recipieService';
 import * as commentService from '../../services/commentService';
 import * as likeService from '../../services/likeService';
+import * as favoriteService from '../../services/favoriteService';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 
@@ -17,6 +18,8 @@ const RecipieDetails = () => {
     const [comments, setComments] = useState([]);
     const [likes, setLikes] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [isFavorite, setIsFavorite] = useState(false);
+    const [favorite, setFavorite] = useState({});
     const { user } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -25,6 +28,9 @@ const RecipieDetails = () => {
     useEffect(() => {
         setIsLoading(true);
         (async () => {
+            const fvoriteRecipies = await favoriteService.getByUserId(user._id);
+            setIsFavorite(fvoriteRecipies.some(x => x.recipieId === recipieId));
+            setFavorite(fvoriteRecipies.find(x => x.recipieId === recipieId))
             const recipieDetails = await recipieService.getOne(recipieId);
             setRecipie(recipieDetails)
             const recipieComments = await commentService.getByRecipieId(recipieId);
@@ -33,7 +39,7 @@ const RecipieDetails = () => {
             setLikes(recipieLikes);
             setIsLoading(false);
         })();
-    }, [recipieId])
+    }, [recipieId, user._id,])
 
     const addCommentHandler = (e) => {
         e.preventDefault();
@@ -68,9 +74,9 @@ const RecipieDetails = () => {
 
     const likeOnClick = () => {
         likeService.create(recipieId)
-        .then(result => {
-            setLikes(likes => [...likes , result])
-        })
+            .then(result => {
+                setLikes(likes => [...likes, result])
+            })
     };
 
     const dislikeOnClick = () => {
@@ -78,6 +84,20 @@ const RecipieDetails = () => {
         likeService.remove(likeId)
         setLikes(likes.filter(x => x._id !== likeId));
     };
+
+    const deleteFavoriteHandler = () => {
+        setIsFavorite(false);
+        favoriteService.remove(favorite._id);
+        setFavorite({});
+    }
+
+    const createFavoriteHandler = () => {
+        setIsFavorite(true);
+        favoriteService.create(recipieId)
+        .then(result => {
+            setFavorite(result)
+        });
+    }
 
     return (
         <section id={styles.recipieDetails}>
@@ -115,17 +135,30 @@ const RecipieDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.likes}>
-                                <div className={styles.likesInfo}>Харесваня {likes.length}</div>
-                                {user.email && <div>
-                                    {likes.some(x => x._ownerId === user._id)
-                                        ? <button className={styles.likeBtn} onClick={dislikeOnClick}>Не харесвам</button>
-                                        : <button className={styles.likeBtn} onClick={likeOnClick}>Харесвам</button>
+                            <div className={styles.favLikes}>
+                                <div>
+                                    {isFavorite
+                                        ? <button className={styles.starBtn} onClick={deleteFavoriteHandler}>
+                                            <img src='/img/fillStar.png' alt='fillStar' width={"70px"} />
+                                        </button>
+                                        : <button className={styles.starBtn} onClick={createFavoriteHandler}>
+                                            <img src='/img/liteStar.png' alt='liteStar' width={"70px"} />
+                                        </button>
                                     }
-                                </div>}
+                                </div>
+                                <div className={styles.likes}>
+                                    <div className={styles.likesInfo}>Харесваня {likes.length}</div>
+                                    {user.email && <div>
+                                        {likes.some(x => x._ownerId === user._id)
+                                            ? <button className={styles.likeBtn} onClick={dislikeOnClick}>Не харесвам</button>
+                                            : <button className={styles.likeBtn} onClick={likeOnClick}>Харесвам</button>
+                                        }
+                                    </div>}
 
 
+                                </div>
                             </div>
+
                         </div>
                         <h2>Съставки</h2>
                         <ul className={styles.ingredients}>

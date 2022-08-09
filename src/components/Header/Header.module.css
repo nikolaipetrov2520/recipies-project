@@ -64,6 +64,14 @@ header img {
     text-align: right;
 }
 
+.username>a{
+    font-weight: normal;
+}
+
+.username>a:hover{
+    color: yellow;
+}
+
 .menuButton {
     display: none; 
     color: white;

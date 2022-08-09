@@ -37,8 +37,7 @@ const CreateRecipie = () => {
             && recipieData.preparationTime !== ""
             && recipieData.title !== ""
             && recipieData.ingredients.length > 0) {
-                console.log(recipieData);
-            setValidateMessageStyle("block");
+            setValidateMessageStyle("none");
             recipieService.create(recipieData)
                 .then(result => {
                     navigate(`/catalog/${result._id}`)

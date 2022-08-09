@@ -2316,6 +2316,14 @@
                 "_createdOn": 1659878626480,
                 "_id": "6c0f1d2a-43e2-48d9-8dbf-19fee1f444f1"
             }
+        ],
+        favorites : [
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "recipieId": "1840a313-225c-416a-817a-9954d4609f7c",
+                "_createdOn": 1660064022984,
+                "_id": "e061a8ee-7944-4876-896a-2c2d175f4e40"
+            }
         ]
     };
     var rules$1 = {

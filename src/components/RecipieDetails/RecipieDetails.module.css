@@ -309,6 +309,19 @@
   background-color: #4f3719;
 }
 
+.favLikes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.starBtn{
+ border: none;
+ cursor: pointer;
+}
+
 @media (max-width: 1200px){
     .ingredients {
         flex-direction: column;

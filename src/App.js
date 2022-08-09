@@ -11,6 +11,7 @@ import Home from './components/Home/Home'
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register/Register';
+import Favorites from './components/Favorites/Favorites'
 import CreateRecipie from './components/CreateRecipie/CreateRecipie';
 import EditRecipie from './components/EditRecipie/EditRecipie';
 import Header from './components/Header/Header';
@@ -41,6 +42,7 @@ function App() {
                 </Suspense>
               } />
               <Route path="/create" element={(<CreateRecipie />)} />
+              <Route path="/favorites" element={(<Favorites />)} />
               <Route path="/recipie/:recipieId/edit" element={<EditRecipie />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/catalog" element={<Catalog />} />
