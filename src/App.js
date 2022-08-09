@@ -42,7 +42,7 @@ function App() {
                 </Suspense>
               } />
               <Route path="/create" element={(<CreateRecipie />)} />
-              <Route path="/favorites" element={(<Favorites />)} />
+              <Route path="/user/favorites" element={(<Favorites />)} />
               <Route path="/recipie/:recipieId/edit" element={<EditRecipie />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/catalog" element={<Catalog />} />

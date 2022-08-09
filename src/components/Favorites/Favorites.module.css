@@ -1,6 +1,10 @@
 .home{
     padding: 80px 0px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home::after {
@@ -28,4 +32,41 @@
     flex-wrap: wrap;
     margin: 50px auto;
     background-color: rgba(235, 234, 234, 0.79);
+}
+
+.menuList{
+    background-color: rgb(31, 142, 130);
+    width: 60%;
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.menuList a:hover{
+    color: yellow
+}
+
+.menufavorites{
+    position: relative;
+    margin: 0px;
+}
+
+.menufavorites a:after{
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    height: 2px;
+    padding: 1px;
+    width: 135px;
+    border-radius: 5px;
+    background-color: yellow;
+    z-index: 10;
+
+}
+
+.menuComments{
+    margin: 0px;
 }

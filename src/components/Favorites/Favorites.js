@@ -1,6 +1,7 @@
 import styles from './Favorites.module.css';
 import { Oval } from 'react-loader-spinner';
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 import * as favoriteService from '../../services/favoriteService';
@@ -21,8 +22,8 @@ const Favorites = () => {
             setIsLoading(false);
             console.log(recipieDetails);
         })();
-        
-        
+
+
     }, [user._id]);
 
     return (
@@ -37,15 +38,26 @@ const Favorites = () => {
                     />
                 </div>
                 : <>
-                    <div>
-                        <section className={styles.catalogPage}>
 
-                            {recipies.length > 0
-                                ? recipies.map(x => <RecipiesItem key={x.recipie._id} recipie={x.recipie} />)
-                                : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>
-                            }
-                        </section>
+                    <div className={styles.menuList}>
+                        <div className={styles.menufavorites}>
+                            <Link to={"/user/favorites"}>
+                                Любими рецепти
+                            </Link>
+                        </div>
+                        <div className={styles.menuComments}>
+                            <Link to={"user/comments"}>
+                                Коментари
+                            </Link>
+                        </div>
                     </div>
+                    <section className={styles.catalogPage}>
+                        {recipies.length > 0
+                            ? recipies.map(x => <RecipiesItem key={x.recipie._id} recipie={x.recipie} />)
+                            : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>
+                        }
+                    </section>
+
                 </>
             }
         </div>
