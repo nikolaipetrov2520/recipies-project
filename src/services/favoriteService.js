@@ -13,10 +13,17 @@ export const getfavotitsByUserId = (id) => {
 
 export const create = (recipieId) => request.post(baseUrl, { recipieId });
 
-export const remove = (favId) => request.del(`${baseUrl}/${favId}`);
+export const remove = (_id) => request.del(`${baseUrl}/${_id}`);
 
 export const getByUserId = (UserId) => {
     const search = encodeURIComponent(`_ownerId="${UserId}"`);
+
+    return request.get(`${baseUrl}?where=${search}`);
+    
+}
+
+export const getByRecepieId = (recepieId) => {
+    const search = encodeURIComponent(`recipieId="${recepieId}"`);
 
     return request.get(`${baseUrl}?where=${search}`);
     

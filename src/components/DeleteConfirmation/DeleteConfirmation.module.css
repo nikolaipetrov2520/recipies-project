@@ -1,0 +1,40 @@
+
+
+.deleteSection{
+    position: absolute;
+    bottom: 150px;
+    left: auto;
+    width: 500px;
+    height: 250px;
+    border: 2px solid red;
+    border-radius: 10px;
+    background-color: rgba(243, 237, 237, 0.993);
+    box-shadow: 0px 0px 15px 0px;
+}
+
+.deleteSection div{
+    font-size: 28px;
+    color: red;
+    padding: 30px;
+    font-weight: bold;
+}
+
+.deleteSection button{
+    margin: 25px;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    width: 150px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.confirm{
+    background-color: green;
+}
+
+.cancel{
+    background-color: red;
+}
+    

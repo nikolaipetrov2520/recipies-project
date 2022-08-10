@@ -4,6 +4,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import styles from './RecipieDetails.module.css';
 import { Oval } from 'react-loader-spinner';
 
+import DeleteConfirmation from '../DeleteConfirmation/DeleteConfirmation';
+
 import * as recipieService from '../../services/recipieService';
 import * as favoriteService from '../../services/favoriteService';
 import * as commentService from '../../services/commentService';
@@ -15,6 +17,7 @@ const RecipieDetails = () => {
     const navigate = useNavigate();
     const { recipieId } = useParams();
     const [recipie, setRecipie] = useState({});
+    const [isdeleteClicked, setIsdeleteClicked] = useState(false);
     const [comments, setComments] = useState([]);
     const [likes, setLikes] = useState([]);
     const [newComment, setNewComment] = useState('');
@@ -22,6 +25,7 @@ const RecipieDetails = () => {
     const [favorite, setFavorite] = useState({});
     const { user } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
+    
 
     const isOwner = recipie._ownerId === user._id;
 
@@ -57,24 +61,28 @@ const RecipieDetails = () => {
         setNewComment(e.target.value);
     };
 
+    const onConfirmation = () => {
+        (async () => {
+                
+            const favorites = await favoriteService.getByRecepieId(recipieId);
+
+            favorites.forEach(function (e) {
+                const favId = e._id
+                console.log(favId);
+                favoriteService.remove(favId)
+            });
+            
+            await recipieService.remove(recipieId);
+            navigate('/catalog');
+
+        })();
+    }
+
     const recipieDeleteHandler = () => {
         if (!isOwner) {
             navigate('/catalog');
         }
-
-        const confirmation = window.confirm('Сигурни ли сте че искате да изтриете рецептата');
-
-        if (confirmation) {
-            (async () => {
-                
-                const fovorites = await favoriteService.getByUserId(user._id);
-                const favId = fovorites.find(x => x.recipieId = recipieId)._id;
-                await favoriteService.remove(favId)
-                await recipieService.remove(recipieId);
-                navigate('/catalog');
-
-            })();
-        }
+        setIsdeleteClicked(true);
     };
 
     const likeOnClick = () => {
@@ -117,6 +125,10 @@ const RecipieDetails = () => {
                 : <div>
                     <h1>{recipie.title}</h1>
                     <div className={styles.infoSection}>
+                        {isdeleteClicked
+                        ? <DeleteConfirmation cancel={setIsdeleteClicked} confirmDelete={onConfirmation}/>
+                    :<></>
+                    }
                         <div className={styles.recipieHeader}>
                             <div className={styles.img}>
                                 <img className={styles.recipieImg} src={recipie.image} alt="Рецепта" />
