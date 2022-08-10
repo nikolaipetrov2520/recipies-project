@@ -2317,7 +2317,7 @@
                 "_id": "6c0f1d2a-43e2-48d9-8dbf-19fee1f444f1"
             }
         ],
-        favorites : [
+        favorites: [
             {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "recipieId": "1840a313-225c-416a-817a-9954d4609f7c",
@@ -2341,8 +2341,14 @@
                 "recipieId": "3f72358f-c3ad-4f8c-831c-a7fa33cdadde",
                 "_createdOn": 1660070047921,
                 "_id": "6bc7e475-8042-47d5-9766-2fa89ed293da"
+            },
+            {
+                "_ownerId": "847ec027-f659-4086-8032-5173e2f9c93a",
+                "recipieId": "3f72358f-c3ad-4f8c-831c-a7fa33cdadde",
+                "_createdOn": 1660070047921,
+                "_id": "6bc7e475-8042-47d5-9766-2fa89ed293da"
             }
-        ]
+        ],
     };
     var rules$1 = {
         users: {

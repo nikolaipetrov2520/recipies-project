@@ -1,10 +1,10 @@
-import styles from './Favorites.module.css';
+import styles from './MyRecipies.module.css';
 import { Oval } from 'react-loader-spinner';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import * as favoriteService from '../../services/favoriteService';
+import * as myRecipiesService from '../../services/myRecipiesService';
 import RecipiesItem from "../Catalog/RecipiesItem/RecipiesItem";
 
 
@@ -17,7 +17,7 @@ const Favorites = () => {
         setIsLoading(true);
 
         (async () => {
-            const recipieDetails = await favoriteService.getfavotitsByUserId(user._id);
+            const recipieDetails = await myRecipiesService.getByUserId(user._id);
             setRecipies(recipieDetails);
             setIsLoading(false);
         })();
@@ -27,7 +27,6 @@ const Favorites = () => {
 
     return (
         <div className={styles.home}>
-
             <div className={styles.menuList}>
                 <div className={styles.menufavorites}>
                     <Link to={"/user/favorites"}>
@@ -35,7 +34,7 @@ const Favorites = () => {
                     </Link>
                 </div>
                 <div className={styles.menuMyRecipies}>
-                    <Link to={"/user/myRecipies"}>
+                    <Link to={"user/myRecipies"}>
                         Моите рецепти
                     </Link>
                 </div>
@@ -51,7 +50,7 @@ const Favorites = () => {
                 </div>
                 : <section className={styles.catalogPage}>
                     {recipies.length > 0
-                        ? recipies.map(x => <RecipiesItem key={x.recipie._id} recipie={x.recipie} />)
+                        ? recipies.map(x => <RecipiesItem key={x._id} recipie={x} />)
                         : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>
                     }
                 </section>

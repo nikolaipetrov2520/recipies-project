@@ -48,12 +48,12 @@
     color: yellow
 }
 
-.menufavorites{
+.menuMyRecipies{
     position: relative;
     margin: 0px;
 }
 
-.menufavorites a:after{
+.menuMyRecipies a:after{
     content: "";
     position: absolute;
     top: 25px;
@@ -67,7 +67,7 @@
 
 }
 
-.menuMyRecipies{
+.menufavorites{
     margin: 0px;
 }
 

@@ -28,7 +28,7 @@ const Catalog = () => {
             setPageCount(Math.ceil(count / 6));
 
             
-            if (search.search !== "") {
+            if (search.search.search !== undefined && search.search.search !== "") {
                 let currentRecipies = await recipieService.getAll();
                 const filter = search.search.toString().toLowerCase();
                 currentRecipies = currentRecipies.filter(x => x.title.toLowerCase().includes(filter) || x.category.toLowerCase().includes(filter))
@@ -37,11 +37,10 @@ const Catalog = () => {
                 const currentRecipies = await recipieService.getAllPaging(offset);
                 setRecipies(currentRecipies);
             }
-            
 
             setIsLoading(false);
         })();
-
+        
     }, [search, searchParams]);
 
     return (

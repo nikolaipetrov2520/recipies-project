@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { Suspense } from "react";
 
 import './App.module.css'
 
@@ -11,7 +10,8 @@ import Home from './components/Home/Home'
 import Login from './components/Login/Login';
 import Logout from './components/Logout/Logout';
 import Register from './components/Register/Register';
-import Favorites from './components/Favorites/Favorites'
+import Favorites from './components/Favorites/Favorites';
+import MyRecipies from './components/MyRecipies/MyRecipies';
 import CreateRecipie from './components/CreateRecipie/CreateRecipie';
 import EditRecipie from './components/EditRecipie/EditRecipie';
 import Header from './components/Header/Header';
@@ -36,13 +36,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/register" element={
-                <Suspense fallback={<span>Loading....</span>}>
-                  <Register />
-                </Suspense>
-              } />
+              <Route path="/register" element={<Register />} />
               <Route path="/create" element={(<CreateRecipie />)} />
               <Route path="/user/favorites" element={(<Favorites />)} />
+              <Route path="/user/myRecipies" element={(<MyRecipies />)} />
               <Route path="/recipie/:recipieId/edit" element={<EditRecipie />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/catalog" element={<Catalog />} />

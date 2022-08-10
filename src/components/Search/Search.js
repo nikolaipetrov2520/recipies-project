@@ -10,7 +10,7 @@ const Search = ({
     menu
 }) => {
 
-    let { setSearch } = useContext(SearchContext);
+    let { search, setSearch } = useContext(SearchContext);
     const [newSearch, setNewSearch] = useState('');
     const [navBtnClass, setNavBtnClass] = useState(styles.navBtnClose);
     const navigate = useNavigate();
@@ -28,6 +28,7 @@ const Search = ({
         e.preventDefault();
         const searchData = Object.fromEntries(new FormData(e.target));
         setSearch(searchData);
+        console.log(search);
         setNewSearch('');
         navigate('/catalog');
     };
@@ -44,7 +45,9 @@ const Search = ({
 
     const searchHandler = (e) => {
         e.preventDefault();
+        
         setSearch({search: newSearch});
+        console.log(search);
         setNewSearch('');
         navigate('/catalog');
     };

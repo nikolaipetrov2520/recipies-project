@@ -5,9 +5,9 @@ import styles from './RecipieDetails.module.css';
 import { Oval } from 'react-loader-spinner';
 
 import * as recipieService from '../../services/recipieService';
+import * as favoriteService from '../../services/favoriteService';
 import * as commentService from '../../services/commentService';
 import * as likeService from '../../services/likeService';
-import * as favoriteService from '../../services/favoriteService';
 
 import { useAuthContext } from '../../contexts/AuthContext';
 
@@ -65,10 +65,15 @@ const RecipieDetails = () => {
         const confirmation = window.confirm('Сигурни ли сте че искате да изтриете рецептата');
 
         if (confirmation) {
-            recipieService.remove(recipieId)
-                .then(() => {
-                    navigate('/catalog');
-                })
+            (async () => {
+                
+                const fovorites = await favoriteService.getByUserId(user._id);
+                const favId = fovorites.find(x => x.recipieId = recipieId)._id;
+                await favoriteService.remove(favId)
+                await recipieService.remove(recipieId);
+                navigate('/catalog');
+
+            })();
         }
     };
 
