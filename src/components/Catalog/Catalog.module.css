@@ -31,6 +31,10 @@
     background-color: rgba(235, 234, 234, 0.79);
 }
 
+.catalogPage>h3{
+    margin: 130px 0px;
+}
+
 .recipieCount{
     position: absolute;
     top: 7px;

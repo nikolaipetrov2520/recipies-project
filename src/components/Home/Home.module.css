@@ -71,6 +71,13 @@
     gap: 20px;
 }
 
+.latest .latestItems p{
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
+}
+
 .mostComment{
     display: flex;
     flex-direction: column;
@@ -87,6 +94,13 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.mostComment .mostCommentItems p{
+    margin: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: grey;
 }
 
 .loader{

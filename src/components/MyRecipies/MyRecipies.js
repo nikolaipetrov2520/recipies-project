@@ -38,6 +38,11 @@ const Favorites = () => {
                         Моите рецепти
                     </Link>
                 </div>
+                <div className={styles.menuMyComments}>
+                    <Link to={"/user/myComments"}>
+                        Моите коментари
+                    </Link>
+                </div>
             </div>
 
             {isLoading

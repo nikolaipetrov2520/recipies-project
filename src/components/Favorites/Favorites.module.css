@@ -34,6 +34,10 @@
     background-color: rgba(235, 234, 234, 0.79);
 }
 
+.catalogPage>h3{
+    margin: 200px 0px;
+}
+
 .menuList{
     background-color: rgb(31, 142, 130);
     width: 60%;
@@ -57,10 +61,10 @@
     content: "";
     position: absolute;
     top: 25px;
-    left: 0px;
+    left: 3px;
     height: 2px;
     padding: 1px;
-    width: 135px;
+    width: 137px;
     border-radius: 5px;
     background-color: yellow;
     z-index: 10;
@@ -70,6 +74,11 @@
 .menuMyRecipies{
     margin: 0px;
 }
+
+.menuMyComments{
+    margin: 0px;
+}
+
 
 @media screen and (max-width: 1300px){
     .catalogPage {

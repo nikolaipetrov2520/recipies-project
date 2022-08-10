@@ -10,3 +10,12 @@ export const getByRecipieId = (recipieId) => {
 
     return request.get(`${baseUrl}?where=${search}`);
 }
+
+export const remove = (_id) => request.del(`${baseUrl}/${_id}`);
+
+export const getByUserId = (userId) => {
+    const search = encodeURIComponent(`_ownerId="${userId}"`);
+    const relations = encodeURIComponent(`recipie=recipieId:recipies`);
+
+    return request.get(`${baseUrl}?where=${search}&load=${relations}`);
+}

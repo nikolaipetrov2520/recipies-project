@@ -1,29 +1,35 @@
-import styles from './Favorites.module.css';
+import styles from './MyComments.module.css';
 import { Oval } from 'react-loader-spinner';
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import * as favoriteService from '../../services/favoriteService';
-import RecipiesItem from "../Catalog/RecipiesItem/RecipiesItem";
+import * as commentService from '../../services/commentService';
 
 
-const Favorites = () => {
+const MyComments = () => {
     const [isLoading, setIsLoading] = useState(false);
     const { user } = useAuthContext();
-    const [recipies, setRecipies] = useState([]);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
 
         (async () => {
-            const recipieDetails = await favoriteService.getfavotitsByUserId(user._id);
-            setRecipies(recipieDetails);
+            const userId = user._id
+            const recipieComments = await commentService.getByUserId(userId);
+            setComments(recipieComments);
+
             setIsLoading(false);
         })();
 
-
     }, [user._id]);
+
+    const removeClickHandler = (_id) => {
+        commentService.remove(_id);
+        setComments(comment => comment.filter(x => x._id !== _id));
+
+    };
 
     return (
         <div className={styles.home}>
@@ -55,10 +61,25 @@ const Favorites = () => {
                     />
                 </div>
                 : <section className={styles.catalogPage}>
-                    {recipies.length > 0
-                        ? recipies.map(x => <RecipiesItem key={x.recipie._id} recipie={x.recipie} />)
-                        : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>
-                    }
+                    <div className={styles.detailsComments}>
+                        <h2>Моите коментари</h2>
+                        <ul>
+                            {comments?.map(x =>
+                                <li key={x._id} className={styles.comment}>
+                                    <div>{x.recipie.title}</div>
+                                    <p>
+                                        {x.text}
+                                        <button className={styles.commentDeleteBtn} onClick={() => removeClickHandler(x._id)}>x</button>
+                                    </p>
+
+                                </li>
+                            )}
+                        </ul>
+
+                        {!comments &&
+                            <p className={styles.noComment}>No comments.</p>
+                        }
+                    </div>
                 </section>
             }
         </div>
@@ -66,4 +87,4 @@ const Favorites = () => {
     );
 };
 
-export default Favorites;
+export default MyComments;

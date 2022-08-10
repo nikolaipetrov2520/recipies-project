@@ -1,0 +1,180 @@
+.home{
+    padding: 80px 0px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home::after {
+    content: "";
+    background: url("/public/img/background.jpg");
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.catalogPage {
+    position: relative;
+    box-shadow: 0px 0px 20px 0px;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 60px 10px;
+    height: auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    background-color: rgba(235, 234, 234, 0.79);
+}
+
+.catalogPage>h3{
+    margin: 200px 0px;
+}
+
+.menuList{
+    background-color: rgb(31, 142, 130);
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.menuList a:hover{
+    color: yellow
+}
+
+.menuMyComments{
+    position: relative;
+    margin: 0px;
+}
+
+.menuMyComments a:after{
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    height: 2px;
+    padding: 1px;
+    width: 145px;
+    border-radius: 5px;
+    background-color: yellow;
+    z-index: 10;
+
+}
+
+.menuMyRecipies{
+    margin: 0px;
+}
+
+.menufavorites{
+    margin: 0px;
+}
+
+.detailsComments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    border-top: 1px solid rgb(206, 206, 206);
+    padding-top: 20px;
+    margin: 0px;
+}
+
+.detailsComments ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    align-items: left;
+    flex-direction: column;
+    width: 90%;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    list-style-type: none;
+}
+
+.detailsComments h2 {
+   color: grey;
+}
+
+.comment p {
+    padding: 9px;
+    margin: 0px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.detailsComments li{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0px;
+}
+
+.detailsComments li>div{
+    color: white;
+    background-color: grey;
+    display: inline-block;
+    padding: 3px 20px;
+    border-radius: 10px;
+    margin: 0px;
+    margin-bottom: 7px;
+}
+
+.detailsComments li p{
+    width:100%;
+    box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: #623131;
+    color: rgb(215, 212, 212);
+    text-align: left;
+    position: relative;
+    margin: 0px;
+}
+
+.commentDeleteBtn{
+    position: absolute;
+    font-size: 17px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1px 7px;
+    cursor: pointer;
+}
+
+.commentDeleteBtn:hover{
+   color: rgb(213, 212, 212);
+   background-color: rgb(210, 3, 3);
+}
+
+
+@media screen and (max-width: 1300px){
+    .catalogPage {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .catalogPage {
+        width: 90%;
+    }
+}
+
+.loader{
+    margin: 310px 0px;
+}
