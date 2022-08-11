@@ -79,8 +79,8 @@
 
 .paginationList li{
     border: 1px solid green;
-    border-radius: 5px;
-    padding: 5px 3px;
+    border-radius: 6px;
+    padding: 5px 2px;
     background-color: rgb(31, 142, 130);
     cursor: pointer;
 }
@@ -91,14 +91,11 @@
     
 }
 
-.pageNumbers li{
-    padding: 5px 7px;
-}
-
 .paginationList li a{
     color: rgb(219, 219, 219);
     cursor: pointer;
     font-weight: normal;
+    padding: 3px 3px;
 }
 
 .paginationList .active>a{
@@ -112,7 +109,7 @@
 }
 .paginationList .inactiveArrow>a{
     font-weight: bold;
-    color: rgb(93, 93, 93);
+    color: rgb(121, 121, 121);
 }
 
 .paginationList .inactiveArrow:hover{

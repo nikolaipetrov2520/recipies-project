@@ -25,7 +25,7 @@ const RecipieDetails = () => {
     const [favorite, setFavorite] = useState({});
     const { user } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
-    
+
 
     const isOwner = recipie._ownerId === user._id;
 
@@ -63,7 +63,7 @@ const RecipieDetails = () => {
 
     const onConfirmation = () => {
         (async () => {
-                
+
             const favorites = await favoriteService.getByRecepieId(recipieId);
 
             favorites.forEach(function (e) {
@@ -71,7 +71,7 @@ const RecipieDetails = () => {
                 console.log(favId);
                 favoriteService.remove(favId)
             });
-            
+
             await recipieService.remove(recipieId);
             navigate('/catalog');
 
@@ -107,9 +107,9 @@ const RecipieDetails = () => {
     const createFavoriteHandler = () => {
         setIsFavorite(true);
         favoriteService.create(recipieId)
-        .then(result => {
-            setFavorite(result)
-        });
+            .then(result => {
+                setFavorite(result)
+            });
     }
 
     return (
@@ -126,9 +126,11 @@ const RecipieDetails = () => {
                     <h1>{recipie.title}</h1>
                     <div className={styles.infoSection}>
                         {isdeleteClicked
-                        ? <DeleteConfirmation cancel={setIsdeleteClicked} confirmDelete={onConfirmation}/>
-                    :<></>
-                    }
+                            ? <div className={styles.confirmation}>
+                                <DeleteConfirmation cancel={setIsdeleteClicked} confirmDelete={onConfirmation} />
+                            </div>
+                            : <></>
+                        }
                         <div className={styles.recipieHeader}>
                             <div className={styles.img}>
                                 <img className={styles.recipieImg} src={recipie.image} alt="Рецепта" />

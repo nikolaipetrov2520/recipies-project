@@ -26,9 +26,9 @@ const Catalog = () => {
             const count = await recipieService.getCount();
             setRecipieCount(count);
             setPageCount(Math.ceil(count / 6));
-
+            console.log(search);
             
-            if (search.search.search !== undefined && search.search.search !== "") {
+            if (search.search.search !== undefined && search.search !== "") {
                 let currentRecipies = await recipieService.getAll();
                 const filter = search.search.toString().toLowerCase();
                 currentRecipies = currentRecipies.filter(x => x.title.toLowerCase().includes(filter) || x.category.toLowerCase().includes(filter))

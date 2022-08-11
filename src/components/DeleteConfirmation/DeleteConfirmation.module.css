@@ -2,8 +2,8 @@
 
 .deleteSection{
     position: absolute;
-    bottom: 150px;
-    left: auto;
+    bottom: 550px;
+    left: 35%;
     width: 500px;
     height: 250px;
     border: 2px solid red;

@@ -20,7 +20,6 @@
 }
 
 .infoSection {
-    position: relative;
     margin: auto;
     width: 90%;
     border-radius: 10px;
@@ -323,6 +322,16 @@
 .starBtn{
  border: none;
  cursor: pointer;
+}
+
+.confirmation{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.795);
+    z-index: 10;
 }
 
 @media (max-width: 1200px){
