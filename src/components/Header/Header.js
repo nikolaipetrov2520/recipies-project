@@ -39,7 +39,7 @@ const Header = () => {
             <Search menu={nemuButton} />
             <div className={styles.username}>
                 {user.email && <span>
-                <Link to="/user/favorites">{user.username}</Link>
+                <Link to="/user/favorites">Здравейте {user.username}</Link>
                    </span>}
             </div>
             <nav className={navClass}>
