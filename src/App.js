@@ -49,6 +49,7 @@ function App() {
               <Route path="/catalog/?page" element={<Catalog />} />
               <Route path="/catalog/:recipieId" element={<RecipieDetails />} />
               <Route path="*" element={<ErrorPage />} />
+              <Route path="/404" element={<ErrorPage />} />
             </Routes>
           </main>
           <Footer />
