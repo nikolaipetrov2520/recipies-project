@@ -15,6 +15,7 @@ const Register = ({ auth }) => {
         const formData = new FormData(e.target);
 
         const email = formData.get('email');
+        const username = formData.get('username');
         const password = formData.get('password');
         const confirmPassword = formData.get('confirm-password');
 
@@ -22,7 +23,7 @@ const Register = ({ auth }) => {
             return;
         }
 
-        authService.register(email, password)
+        authService.register(email, password, username)
             .then(authData => {
                 auth.userLogin(authData);
                 navigate('/');
@@ -40,6 +41,13 @@ const Register = ({ auth }) => {
                         id="email"
                         name="email"
                         placeholder="maria@email.com"
+                    />
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="username"
+                        id="username"
+                        name="username"
+                        placeholder="maria"
                     />
                     <label htmlFor="pass">Password:</label>
                     <input type="password" name="password" id="register-password" />

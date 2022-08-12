@@ -61,7 +61,8 @@ label[for="female"] {
 }
 
 input[type="password"],
-input[type="email"] {
+input[type="email"],
+input[type="username"] {
     background: #ecf0f3;
     padding: 30px;
     padding-left: 20px;

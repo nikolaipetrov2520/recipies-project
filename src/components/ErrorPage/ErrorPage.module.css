@@ -1,0 +1,18 @@
+.error{
+    margin: 130px 0px;
+    padding: 50px 0px;
+}
+
+.num{
+    padding: 10px 0px 60px 0px;
+    font-size: 100px;
+    color: red;
+    font-weight: bold;
+}
+
+.text{
+    padding: 60px 0px 10px 0px;
+    font-size: 50px;
+    color: rgb(123, 123, 123);
+    font-weight: bold;
+}

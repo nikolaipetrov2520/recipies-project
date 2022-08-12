@@ -55,6 +55,7 @@ const Favorites = () => {
                     />
                 </div>
                 : <section className={styles.catalogPage}>
+                    <h1>Любими рецепти</h1>
                     {recipies.length > 0
                         ? recipies.map(x => <RecipiesItem key={x.recipie._id} recipie={x.recipie} />)
                         : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>

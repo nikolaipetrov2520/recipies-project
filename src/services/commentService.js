@@ -7,8 +7,9 @@ export const create = (recipieId, comment) =>
 
 export const getByRecipieId = (recipieId) => {
     const search = encodeURIComponent(`recipieId="${recipieId}"`);
+    const relations = encodeURIComponent(`user=_ownerId:users`);
 
-    return request.get(`${baseUrl}?where=${search}`);
+    return request.get(`${baseUrl}?where=${search}&load=${relations}`);
 }
 
 export const remove = (_id) => request.del(`${baseUrl}/${_id}`);

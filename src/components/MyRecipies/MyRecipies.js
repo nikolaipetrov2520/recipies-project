@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import * as myRecipiesService from '../../services/myRecipiesService';
+import * as recipieService from '../../services/recipieService'
 import RecipiesItem from "../Catalog/RecipiesItem/RecipiesItem";
 
 
@@ -17,7 +17,7 @@ const Favorites = () => {
         setIsLoading(true);
 
         (async () => {
-            const recipieDetails = await myRecipiesService.getByUserId(user._id);
+            const recipieDetails = await recipieService.getByUserId(user._id);
             setRecipies(recipieDetails);
             setIsLoading(false);
         })();
@@ -54,6 +54,7 @@ const Favorites = () => {
                     />
                 </div>
                 : <section className={styles.catalogPage}>
+                    <h1>Моите рецепти</h1>
                     {recipies.length > 0
                         ? recipies.map(x => <RecipiesItem key={x._id} recipie={x} />)
                         : <h3 className={styles.noArticles}>Няма намерени рецепти</h3>

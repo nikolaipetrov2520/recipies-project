@@ -98,7 +98,12 @@
     padding: 3px 3px;
 }
 
+.paginationList .active{
+    background-color: rgb(47, 185, 173);
+}
+
 .paginationList .active>a{
+    
     font-weight: bold;
     color: white;
 }

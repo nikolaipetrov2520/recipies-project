@@ -247,6 +247,12 @@
     text-align: left;
 }
 
+.infoSection>.detailsComments div {
+  width: 100%;
+  text-align: left;
+  color: grey;
+}
+
 .comment p {
     padding: 9px;
     margin: 0px;

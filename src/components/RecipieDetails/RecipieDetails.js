@@ -38,6 +38,7 @@ const RecipieDetails = () => {
             const recipieDetails = await recipieService.getOne(recipieId);
             setRecipie(recipieDetails)
             const recipieComments = await commentService.getByRecipieId(recipieId);
+            console.log(recipieComments);
             setComments(recipieComments);
             const recipieLikes = await likeService.getByRecipieId(recipieId);
             setLikes(recipieLikes);
@@ -202,9 +203,14 @@ const RecipieDetails = () => {
                             <h2>Коментари</h2>
                             <ul>
                                 {comments?.map(x =>
-                                    <li key={x._id} className={styles.comment}>
-                                        <p>{x.text}</p>
-                                    </li>
+                                    <>
+                                        <div>{x.user.email}</div>
+                                        <li key={x._id} className={styles.comment}>
+
+                                            <p>{x.text}</p>
+                                        </li>
+                                    </>
+
                                 )}
                             </ul>
 

@@ -8,7 +8,7 @@ export const getfavotitsByUserId = (id) => {
     const search = encodeURIComponent(`_ownerId="${id}"`);
     const relations = encodeURIComponent(`recipie=recipieId:recipies`);
 
-    return request.get(`${baseUrl}?where=${search}&load=${relations}`);
+    return request.get(`${baseUrl}?where=${search}&sortBy=_createdOn%20desc&load=${relations}`);
 }
 
 export const create = (recipieId) => request.post(baseUrl, { recipieId });

@@ -38,8 +38,8 @@ const Header = () => {
             </h1>
             <Search menu={nemuButton} />
             <div className={styles.username}>
-                {user.email && <span className={styles.username}>
-                <Link to="/user/favorites">{user.email}</Link>
+                {user.email && <span>
+                <Link to="/user/favorites">{user.username}</Link>
                    </span>}
             </div>
             <nav className={navClass}>

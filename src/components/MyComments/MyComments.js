@@ -61,24 +61,24 @@ const MyComments = () => {
                     />
                 </div>
                 : <section className={styles.catalogPage}>
+                    <h1>Моите коментари</h1>
                     <div className={styles.detailsComments}>
-                        <h2>Моите коментари</h2>
-                        <ul>
-                            {comments?.map(x =>
-                                <li key={x._id} className={styles.comment}>
-                                    <div>{x.recipie.title}</div>
-                                    <p>
-                                        {x.text}
-                                        <button className={styles.commentDeleteBtn} onClick={() => removeClickHandler(x._id)}>x</button>
-                                    </p>
+                        {comments.length > 0
+                        ? <ul>
+                        {comments?.map(x =>
+                            <li key={x._id} className={styles.comment}>
+                                <div>{x.recipie.title}</div>
+                                <p>
+                                    {x.text}
+                                    <button className={styles.commentDeleteBtn} onClick={() => removeClickHandler(x._id)}>x</button>
+                                </p>
 
-                                </li>
-                            )}
-                        </ul>
-
-                        {!comments &&
-                            <p className={styles.noComment}>No comments.</p>
-                        }
+                            </li>
+                        )}
+                    </ul>
+                    :<h3 className={styles.noArticles}>Няма намерени коментари</h3>
+                    }
+                   
                     </div>
                 </section>
             }

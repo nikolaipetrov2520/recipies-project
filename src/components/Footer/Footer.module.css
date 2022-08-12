@@ -29,3 +29,7 @@ footer div{
 footer div i{
     width: 35%;
 }
+
+i{
+    cursor: pointer;
+}

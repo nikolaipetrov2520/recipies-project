@@ -18,6 +18,7 @@ import EditRecipie from './components/EditRecipie/EditRecipie';
 import Header from './components/Header/Header';
 import Catalog from './components/Catalog/Catalog';
 import Footer from './components/Footer/Footer';
+import ErrorPage from './components/ErrorPage/ErrorPage'
 import RecipieDetails from './components/RecipieDetails/RecipieDetails';
 
 import './App.css';
@@ -47,6 +48,7 @@ function App() {
               <Route path="/catalog" element={<Catalog />} />
               <Route path="/catalog/?page" element={<Catalog />} />
               <Route path="/catalog/:recipieId" element={<RecipieDetails />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
           <Footer />

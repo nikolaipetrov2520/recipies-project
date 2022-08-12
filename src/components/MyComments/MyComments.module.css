@@ -34,8 +34,20 @@
     background-color: rgba(235, 234, 234, 0.79);
 }
 
-.catalogPage>h3{
-    margin: 200px 0px;
+.catalogPage>div>h3{
+    margin: 120px 0px;
+}
+
+.catalogPage>h1 {
+    color: rgb(141, 84, 56);
+    font-family: "Agency FB";
+    font-size: 48px;
+    font-weight: 700;
+    margin-top: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .menuList{
