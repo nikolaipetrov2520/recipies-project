@@ -32,7 +32,7 @@ const Login = () => {
         <section className={styles.auth}>
             <form id="login" onSubmit={onSubmit}>
                 <div className={styles.container}>
-                    <h1>Login</h1>
+                    <h1>Вход</h1>
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
@@ -40,12 +40,12 @@ const Login = () => {
                         name="email"
                         placeholder="Sokka@gmail.com"
                     />
-                    <label htmlFor="login-pass">Password:</label>
+                    <label htmlFor="login-pass">Парола:</label>
                     <input type="password" id="login-password" name="password" />
-                    <input type="submit" className={styles.btnSubmit} value="Login" />
+                    <input type="submit" className={styles.btnSubmit} value="Вход" />
                     <p className={styles.field}>
                         <span>
-                            If you don't have profile click <Link to="/register">here</Link>
+                            Ако все още намате профил кликнете <Link to="/register">тук</Link>
                         </span>
                     </p>
                 </div>

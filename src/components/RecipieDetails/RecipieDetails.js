@@ -51,6 +51,7 @@ const RecipieDetails = () => {
         if (newComment !== "") {
             commentService.create(recipieId, newComment)
                 .then(result => {
+                    result.user = user;
                     setComments(comment => [...comment, result]);
                     setNewComment('');
                 });
@@ -204,9 +205,8 @@ const RecipieDetails = () => {
                             <ul>
                                 {comments?.map(x =>
                                     <>
-                                        <div>{x.user.email}</div>
+                                        <div>{x.user?.username}</div>
                                         <li key={x._id} className={styles.comment}>
-
                                             <p>{x.text}</p>
                                         </li>
                                     </>

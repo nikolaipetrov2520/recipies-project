@@ -34,7 +34,7 @@ const Register = ({ auth }) => {
         <section id="register-page" className={styles.auth}>
             <form id="register" onSubmit={onSubmit}>
                 <div className={styles.container}>
-                    <h1>Register</h1>
+                    <h1>Регистрация</h1>
                     <label htmlFor="email">Email:</label>
                     <input
                         type="email"
@@ -42,21 +42,21 @@ const Register = ({ auth }) => {
                         name="email"
                         placeholder="maria@email.com"
                     />
-                    <label htmlFor="username">Username:</label>
+                    <label htmlFor="username">Потребителско име:</label>
                     <input
                         type="username"
                         id="username"
                         name="username"
                         placeholder="maria"
                     />
-                    <label htmlFor="pass">Password:</label>
+                    <label htmlFor="pass">Парола:</label>
                     <input type="password" name="password" id="register-password" />
-                    <label htmlFor="con-pass">Confirm Password:</label>
+                    <label htmlFor="con-pass">Потвърдете паролата:</label>
                     <input type="password" name="confirm-password" id="confirm-password" />
-                    <input className={styles.btnSubmit} type="submit" value="Register" />
+                    <input className={styles.btnSubmit} type="submit" value="Регистрация" />
                     <p className={styles.field}>
                         <span>
-                            If you already have profile click <Link to="/login">here</Link>
+                            Ако вече имате регистрация кликнете <Link to="/login">hтук</Link>
                         </span>
                     </p>
                 </div>

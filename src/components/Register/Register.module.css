@@ -87,7 +87,7 @@ label[for="terms"]>input {
     cursor: pointer;
     font-weight: 900;
     transition: 0.5s;
-    width: 30%;
+    width: 40%;
 }
 
 .btnSubmit:hover {
