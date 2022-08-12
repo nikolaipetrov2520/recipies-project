@@ -158,7 +158,8 @@ const RecipieDetails = () => {
                             </div>
                             <div className={styles.favLikes}>
                                 <div>
-                                    {isFavorite
+                                    {user.email && <>
+                                        {isFavorite
                                         ? <button className={styles.starBtn} onClick={deleteFavoriteHandler}>
                                             <img src='/img/fillStar.png' alt='fillStar' width={"70px"} />
                                         </button>
@@ -166,6 +167,8 @@ const RecipieDetails = () => {
                                             <img src='/img/liteStar.png' alt='liteStar' width={"70px"} />
                                         </button>
                                     }
+                                    </>}
+                                    
                                 </div>
                                 <div className={styles.likes}>
                                     <div className={styles.likesInfo}>Харесваня {likes.length}</div>
